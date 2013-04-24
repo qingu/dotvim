@@ -325,6 +325,8 @@ Bundle 'The-NERD-Commenter'
 
 Bundle 'Tabular'
 
+Bundle 'plasticboy/vim-markdown'
+
 filetype plugin indent on
 
 
@@ -379,4 +381,8 @@ let NERDChristmasTree=1
 "usage:首先输入
 ":FencAutoDectect自动检测，然后就可以:FencView查看自动检测到的字符集是什么了
 ":F然后直接tab按键就可以了,不用全部输入
+
+"Markdown"
+"关掉折叠功能
+let g:vim_markdown_folding_disabled=1
 "重复输入:FencView视窗在'关闭/打开'之间切换
