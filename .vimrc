@@ -1,107 +1,91 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Author:Qingu Jiang
 "Date:2013/2/2
 "Ref:http://www.cnblogs.com/ma6174/archive/2011/12/10/2283393.html
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Basic configure
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set nocompatible    "¸ÃÉèÖÃĞèÒª·ÅÔÚÏÂÒ»ÉèÖÃÇ°£¬²»È»ÏÂÒ»ÉèÖÃÎŞĞ§"
-set shortmess=atI   " Æô¶¯µÄÊ±ºò²»ÏÔÊ¾ÄÇ¸öÔ®ÖúÎÚ¸É´ï¶ùÍ¯µÄÌáÊ¾  
-set nu              "ÏÔÊ¾ĞĞºÅ
-set go=             "²»ÒªÍ¼ĞÎ°´Å¥
-color desert        " ÉèÖÃ±³¾°Ö÷Ìâ
-"set guifont=Courier_New:h10:cANSI   " ÉèÖÃ×ÖÌå
-set guifont=Monospace\ 11
-"winpos 5 5          " Éè¶¨´°¿ÚÎ»ÖÃ 
-"set lines=40 columns=155    " Éè¶¨´°¿Ú´óĞ¡
-syntax on           " Óï·¨¸ßÁÁ 
-"autocmd InsertLeave * se nocul  " ÓÃÇ³É«¸ßÁÁµ±Ç°ĞĞ
-"autocmd InsertEnter * se cul    " ÓÃÇ³É«¸ßÁÁµ±Ç°ĞĞ
-"set ruler           " ÏÔÊ¾±ê³ß
-set showcmd         " ÊäÈëµÄÃüÁîÏÔÊ¾³öÀ´£¬¿´µÄÇå³şĞ©
-"set cmdheight=1    " ÃüÁîĞĞ£¨ÔÚ×´Ì¬ĞĞÏÂ£©µÄ¸ß¶È£¬ÉèÖÃÎª1
-"set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strftime(\"%d/%m/%y\ -\ %H:%M\")}   "×´Ì¬ĞĞÏÔÊ¾µÄÄÚÈİ 
-"set nocompatible  "È¥µôÌÖÑáµÄÓĞ¹ØviÒ»ÖÂĞÔÄ£Ê½£¬±ÜÃâÒÔÇ°°æ±¾µÄÒ»Ğ©bugºÍ¾ÖÏŞ(ÎªÊ²Ã´ËüºÍshortmessÉèÖÃ³åÍ»)
+set nocompatible    "è¯¥è®¾ç½®éœ€è¦æ”¾åœ¨ä¸‹ä¸€è®¾ç½®å‰ï¼Œä¸ç„¶ä¸‹ä¸€è®¾ç½®æ— æ•ˆ"
+set shortmess=atI   " å¯åŠ¨çš„æ—¶å€™ä¸æ˜¾ç¤ºé‚£ä¸ªæ´åŠ©ä¹Œå¹²è¾¾å„¿ç«¥çš„æç¤º  
+set nu              "æ˜¾ç¤ºè¡Œå·
+set go=             "ä¸è¦å›¾å½¢æŒ‰é’®
+color desert        " è®¾ç½®èƒŒæ™¯ä¸»é¢˜
 
-"set fencs=utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936      "fileencodingsÎÄ¼ş±àÂë
-"set termencoding=utf-8                                          "ÖÕ¶Ë±àÂë
+if has("win32")
+     set guifont=Courier_New:h10:cANSI   " è®¾ç½®å­—ä½“
+else
+     set guifont=Monospace\ 11
+endif
+
+"set tw=78 fo+=Mm "è‡ªåŠ¨æ¢è¡Œ"
+"winpos 5 5          " è®¾å®šçª—å£ä½ç½® 
+"set lines=40 columns=155    " è®¾å®šçª—å£å¤§å°
+syntax on           " è¯­æ³•é«˜äº® 
+"autocmd InsertLeave * se nocul  " ç”¨æµ…è‰²é«˜äº®å½“å‰è¡Œ
+"autocmd InsertEnter * se cul    " ç”¨æµ…è‰²é«˜äº®å½“å‰è¡Œ
+"set ruler           " æ˜¾ç¤ºæ ‡å°º
+
+set showcmd         " è¾“å…¥çš„å‘½ä»¤æ˜¾ç¤ºå‡ºæ¥ï¼Œçœ‹çš„æ¸…æ¥šäº›
+"set cmdheight=1    " å‘½ä»¤è¡Œï¼ˆåœ¨çŠ¶æ€è¡Œä¸‹ï¼‰çš„é«˜åº¦ï¼Œè®¾ç½®ä¸º1
+"set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strftime(\"%d/%m/%y\ -\ %H:%M\")}   "çŠ¶æ€è¡Œæ˜¾ç¤ºçš„å†…å®¹ 
+"set nocompatible  "å»æ‰è®¨åŒçš„æœ‰å…³viä¸€è‡´æ€§æ¨¡å¼ï¼Œé¿å…ä»¥å‰ç‰ˆæœ¬çš„ä¸€äº›bugå’Œå±€é™(ä¸ºä»€ä¹ˆå®ƒå’Œshortmessè®¾ç½®å†²çª)
+
+"set fencs=utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936      "fileencodingsæ–‡ä»¶ç¼–ç 
+"set termencoding=utf-8                                          "ç»ˆ>ç«¯ç¼–ç 
 "set encoding=utf-8
 "set fileencodings=ucs-bom,utf-8,cp936
 "set fileencoding=utf-8
+filetype plugin indent on
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""æ–°æ–‡ä»¶æ ‡é¢˜"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-"""""ĞÂÎÄ¼ş±êÌâ"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"æ–°å»º.c,.h,.sh,.py,.javaæ–‡ä»¶ï¼Œè‡ªåŠ¨æ’å…¥æ–‡ä»¶å¤´ 
 
-"ĞÂ½¨.c,.h,.sh,.py,.javaÎÄ¼ş£¬×Ô¶¯²åÈëÎÄ¼şÍ· 
+autocmd BufNewFile *.cpp,*.[ch],*.sh,*.py,*.java exec ":call SetTitle()"
+"å®šä¹‰å‡½æ•°SetTitleï¼Œè‡ªåŠ¨æ’å…¥æ–‡ä»¶å¤´ 
 
-autocmd BufNewFile *.cpp,*.[ch],*.sh,*.py,*.java exec ":call SetTitle()" 
+function! SetTitle()
 
-""¶¨Òåº¯ÊıSetTitle£¬×Ô¶¯²åÈëÎÄ¼şÍ· 
+    "å¦‚æœæ–‡ä»¶ç±»å‹ä¸º.shæ–‡ä»¶ 
 
-func SetTitle() 
+    if &filetype == 'sh'
 
-    "Èç¹ûÎÄ¼şÀàĞÍÎª.shÎÄ¼ş 
+        call setline(1,              "\#########################################################################")
+        call append(line("."),   "\# File Name: ".expand("%"))
+        call append(line(".")+1, "\# Author: Qingu Jiang")
+        call append(line(".")+2, "\# mail: jiangqingu@gmail.com")
+        call append(line(".")+3, "\# Created Time: ".strftime("%c"))
+        call append(line(".")+4, "\#########################################################################")
+        call append(line(".")+5, "\#!/bin/bash")
+        call append(line(".")+6, "")
 
-    if &filetype == 'sh' 
-
-        call setline(1,"\#########################################################################") 
-
-        call append(line("."), "\# File Name: ".expand("%")) 
-
-        call append(line(".")+1, "\# Author: Qingu Jiang") 
-
-        call append(line(".")+2, "\# mail: jiangqingu@gmail.com") 
-
-        call append(line(".")+3, "\# Created Time: ".strftime("%c")) 
-
-        call append(line(".")+4, "\#########################################################################") 
-
-        call append(line(".")+5, "\#!/bin/bash") 
-
-        call append(line(".")+6, "") 
-        
     elseif &filetype == 'python'
-    
-        call setline(1,"\#########################################################################") 
 
-        call append(line("."), "\# File Name: ".expand("%")) 
+        call setline(1,          "\#!/usr/bin/python")
+        call setline(line("."),  "\# -*- coding:utf-8 -*-")
+        call setline(line(".")+1,"\#########################################################################")
+        call append(line(".")+2,   "\# File Name: ".expand("%"))
+        call append(line(".")+3, "\# Author: Qingu Jiang")
+        call append(line(".")+4, "\# mail: jiangqingu@gmail.com")
+        call append(line(".")+5, "\# Created Time: ".strftime("%c"))
+        call append(line(".")+6, "\#########################################################################")
+        call append(line(".")+7, "")
 
-        call append(line(".")+1, "\# Author: Qingu Jiang") 
+    else
 
-        call append(line(".")+2, "\# mail: jiangqingu@gmail.com") 
-
-        call append(line(".")+3, "\# Created Time: ".strftime("%c")) 
-
-        call append(line(".")+4, "\#########################################################################") 
-
-        call append(line(".")+5, "\#!/bin/python") 
-
-        call append(line(".")+6, "") 
-
-    else 
-
-        call setline(1, "/*************************************************************************") 
-
-        call append(line("."), "    > File Name: ".expand("%")) 
-
-        call append(line(".")+1, "    > Author: Qingu Jiang") 
-
+        call setline(1,"/*************************************************************************")
+        call append(line("."),   "    > File Name: ".expand("%"))
+        call append(line(".")+1, "    > Author: Qingu Jiang")
         call append(line(".")+2, "    > Mail: jiangqingu@gmail.com ") 
-
-        call append(line(".")+3, "    > Created Time: ".strftime("%c")) 
-
-        call append(line(".")+4, " ************************************************************************/") 
-
+        call append(line(".")+3, "    > Created Time: ".strftime("%c"))
+        call append(line(".")+4, " ************************************************************************/")
         call append(line(".")+5, "")
-
     endif
 
     if &filetype == 'cpp'
 
         call append(line(".")+6, "#include<iostream>")
-
         call append(line(".")+7, "using namespace std;")
-
         call append(line(".")+8, "")
 
     endif
@@ -109,58 +93,77 @@ func SetTitle()
     if &filetype == 'c'
 
         call append(line(".")+6, "#include<stdio.h>")
-
         call append(line(".")+7, "")
 
     endif
 
-    "ĞÂ½¨ÎÄ¼şºó£¬×Ô¶¯¶¨Î»µ½ÎÄ¼şÄ©Î²
+    "æ–°å»ºæ–‡ä»¶åï¼Œè‡ªåŠ¨å®šä½åˆ°æ–‡ä»¶æœ«å°¾
 
     autocmd BufNewFile * normal G
 
-endfunc 
-
+endfunction
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"¼üÅÌÃüÁî
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-  
-nnoremap <F2> :g/^\s*$/d<CR>                 "F2È¥¿ÕĞĞ
- 
-nnoremap <C-F2> :vert diffsplit              "Ctrl-F2 ±È½ÏÎÄ¼ş 
+"é”®ç›˜å‘½ä»¤
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""                                 
+nnoremap <F2> :g/^\s*$/d<CR>                 "F2å»ç©ºè¡Œ
 
-" Ó³ÉäÈ«Ñ¡+¸´ÖÆ ctrl+a
+nnoremap <C-F2> :vert diffsplit              "Ctrl-F2 æ¯”è¾ƒæ–‡ä»¶
+
+" æ˜ å°„å…¨é€‰+å¤åˆ¶ ctrl+a
 map <C-A> ggVGY
 map! <C-A> <Esc>ggVGY
 map <F12> gg=G
 
-" Ñ¡ÖĞ×´Ì¬ÏÂ Ctrl+c ¸´ÖÆ
+" é€‰ä¸­çŠ¶æ€ä¸‹ Ctrl+c å¤åˆ¶
 vmap <C-c> "+y
 
-"ÏÂÃæÁ½ÌõÃüÁîÃ»Åª¶®"
-"nmap <leader>w :w!<cr>
+
+"fast saving, <leader> default key = '\'
+let mapleader="," "set <leader> key = ','
+
+nmap <leader>w :w<cr>
+
+nmap <leader>q :q!<cr>
+
+"press ,ev to open .vimrc file
+nmap <silent> <leader>ev :e $MYVIMRC<CR>
 
 "nmap <leader>f :find<cr>
 
-map <M-F2> :tabnew<CR>                       "Alt-F2 ĞÂ½¨±êÇ©  
+"press ,ev to open .vimrc file
+nmap <silent> <leader>ev :e $MYVIMRC<CR>
 
-map <F3> :tabnew .<CR>                       "F3 ÁĞ³öµ±Ç°Ä¿Â¼ÎÄ¼ş
+"press ,sv to reload .vimrc file
+nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
-map <C-F3> \be                               "Ctrl-F3 ´ò¿ªÊ÷×´ÎÄ¼şÄ¿Â¼ 
+"press ,e to open file in new tab label
+nmap  <leader>e :tabe<Space>
 
+"press ,r to open file in new tab label
+nmap <leader>r :e<Space>
+
+"press ,p to exec python script
+nmap <leader>p :!python %<CR>
+
+map <M-F2> :tabnew<CR>                       "Alt-F2 æ–°å»ºæ ‡ç­¾
+
+map <F3> :tabnew .<CR>                       "F3 åˆ—å‡ºå½“å‰ç›®å½•æ–‡ä»¶
+
+map <C-F3> \be                               "Ctrl-F3 æ‰“å¼€æ ‘çŠ¶æ–‡ä»¶ç›®>å½•
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"³ÌĞò±àÒë¡¢ÔËĞĞ¼°µ÷ÊÔ
+"ç¨‹åºç¼–è¯‘ã€è¿è¡ŒåŠè°ƒè¯•
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"C£¬C++ °´F5±àÒëÔËĞĞ
+"Cï¼ŒC++ æŒ‰F5ç¼–è¯‘è¿è¡Œ
 
 map <F5> :call CompileRunGcc()<CR>
+map <F6> :call RunGcc()<CR>
 
 func! CompileRunGcc()
 
     exec "w"
 
     if &filetype == 'c'
-
         exec "!g++ % -o %<"
 
         exec "! ./%<"
@@ -171,33 +174,46 @@ func! CompileRunGcc()
 
         exec "! ./%<"
 
-    elseif &filetype == 'java' 
+    elseif &filetype == 'fortran'
 
-        exec "!javac %" 
+        exec "!gfortran % -g -o %<.exe"
+
+                "exec "!%<.exe"
+
+                                                  
+    elseif &filetype == 'java'
+
+        exec "!javac %"
 
         exec "!java %<"
 
     elseif &filetype == 'sh'
 
         :!./%
-        
+
     elseif &filetype == 'python'
-    
-        :!./%
+
+        ":!./%
+                exec "!python %"
 
     endif
+endfunc
 
+func! RunGcc()
+        if &filetype == 'fortran'
+                exec "!%<.exe"
+        endif
 endfunc
 
 
-"C,C++µÄµ÷ÊÔ
+"C,C++çš„è°ƒè¯•
 
 map <F8> :call Rungdb()<CR>
 
 func! Rungdb()
 
     exec "w"
-
+                                                  
     exec "!g++ % -g -o %<"
 
     exec "!gdb ./%<"
@@ -205,130 +221,126 @@ func! Rungdb()
 endfunc
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-""ÊµÓÃÉèÖÃ
+""å®ç”¨è®¾ç½®
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" ÉèÖÃµ±ÎÄ¼ş±»¸Ä¶¯Ê±×Ô¶¯ÔØÈë
+" è®¾ç½®å½“æ–‡ä»¶è¢«æ”¹åŠ¨æ—¶è‡ªåŠ¨è½½å…¥
 set autoread
 
-" quickfixÄ£Ê½
+" quickfixæ¨¡å¼
 autocmd FileType c,cpp map <buffer> <leader><space> :w<cr>:make<cr>
 
-"´úÂë²¹È« 
-set completeopt=preview,menu 
+"ä»£ç è¡¥å…¨ 
+set completeopt=preview,menu
 
-"ÔÊĞí²å¼ş  
+"å…è®¸æ’ä»¶  
 filetype plugin on
 
-"¹²Ïí¼ôÌù°å  
-set clipboard+=unnamed 
+"å…±äº«å‰ªè´´æ¿  
+set clipboard+=unnamed
 
-"´Ó²»±¸·İ  
+"ä»ä¸å¤‡ä»½  
 "set nobackup
-
-"make ÔËĞĞ
+"make è¿è¡Œ
 :set makeprg=g++\ -Wall\ \ %
 
-"×Ô¶¯±£´æ
+"è‡ªåŠ¨ä¿å­˜
 set autowrite
 
-set ruler                   " ´ò¿ª×´Ì¬À¸±ê³ß
+set ruler                   " æ‰“å¼€çŠ¶æ€æ æ ‡å°º
 
-set cursorline              " Í»³öÏÔÊ¾µ±Ç°ĞĞ
+set cursorline              " çªå‡ºæ˜¾ç¤ºå½“å‰è¡Œ
 
-set magic                   " ÉèÖÃÄ§Êõ
+set magic                   " è®¾ç½®é­”æœ¯
 
-"set guioptions-=T           " Òş²Ø¹¤¾ßÀ¸
+"set guioptions-=T           " éšè—å·¥å…·æ 
 
-"set guioptions-=m           " Òş²Ø²Ëµ¥À¸
-
-" ÔÚ´¦ÀíÎ´±£´æ»òÖ»¶ÁÎÄ¼şµÄÊ±ºò£¬µ¯³öÈ·ÈÏ
+"set guioptions-=m           " éšè—èœå•æ 
+                                 
+" åœ¨å¤„ç†æœªä¿å­˜æˆ–åªè¯»æ–‡ä»¶çš„æ—¶å€™ï¼Œå¼¹å‡ºç¡®è®¤
 set confirm
 
-" ×Ô¶¯Ëõ½ø
+" è‡ªåŠ¨ç¼©è¿›
 set autoindent
 set cindent
 
-" Tab¼üµÄ¿í¶È
+" Tabé”®çš„å®½åº¦
 set tabstop=4
 
-" Í³Ò»Ëõ½øÎª4
+" ç»Ÿä¸€ç¼©è¿›ä¸º4
 set softtabstop=4
 set shiftwidth=4
 
-" ²»ÒªÓÃ¿Õ¸ñ´úÌæÖÆ±í·û
+" ä¸è¦ç”¨ç©ºæ ¼ä»£æ›¿åˆ¶è¡¨ç¬¦
 set noexpandtab
-
-" ÔÚĞĞºÍ¶Î¿ªÊ¼´¦Ê¹ÓÃÖÆ±í·û
+" åœ¨è¡Œå’Œæ®µå¼€å§‹å¤„ä½¿ç”¨åˆ¶è¡¨ç¬¦
 set smarttab
 
-" ÀúÊ·¼ÇÂ¼Êı
+" å†å²è®°å½•æ•°
 set history=1000
 
-"½ûÖ¹Éú³ÉÁÙÊ±ÎÄ¼ş
+"ç¦æ­¢ç”Ÿæˆä¸´æ—¶æ–‡ä»¶
 set nobackup
 set noswapfile
 
-"ËÑË÷ºöÂÔ´óĞ¡Ğ´
+"æœç´¢å¿½ç•¥å¤§å°å†™
 set ignorecase
 
-"ËÑË÷Öğ×Ö·û¸ßÁÁ
+"æœç´¢é€å­—ç¬¦é«˜äº®
 set hlsearch
 set incsearch
-
-"ĞĞÄÚÌæ»»
+"è¡Œå†…æ›¿æ¢
 set gdefault
 
-"±àÂëÉèÖÃ
-set enc=utf-8
-set fencs=utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936
+"æ ‡å°ºåŠŸèƒ½"
+set cc=80
 
-"ÓïÑÔÉèÖÃ
-"set langmenu=zh_CN.UTF-8
-"set helplang=cn
+"å½“å‰å…‰æ ‡ä¸‹åˆ—é«˜äº®"
+"set cuc
 
-" Õì²âÎÄ¼şÀàĞÍ
-" ÎªVundle²å¼şÉèÖÃ£¬why
-"filetype on
+"ç¼–ç è®¾ç½®
+""set enc=utf-8
+""set fencs=utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936
 
-" ÔØÈëÎÄ¼şÀàĞÍ²å¼ş
-
-"filetype plugin on
-
-" ÎªÌØ¶¨ÎÄ¼şÀàĞÍÔØÈëÏà¹ØËõ½øÎÄ¼ş
-
-"filetype indent on
-
-"VundleÉèÖÃ
-"set nocompatible
-filetype off
-
-set rtp+=~/.vim/bundle/vundle/
+"Vundleè®¾ç½®
+if has("win32")
+        set rtp+=$VIM/vimfiles/bundle/vundle/
+else
+        set rtp+=~/.vim/bundle/vundle/
+endif
 call vundle#rc()
 
 "let Vundle manage Vundle
 Bundle 'gmarik/vundle'
 
 "vim-scripts repos
-"ÎÄ¼şËÑË÷²å¼ş
+"æ–‡ä»¶æœç´¢æ’ä»¶
 Bundle 'ctrlp.vim'
-"×Ô¶¯²¹È«Åä¶Ô·ûºÅ£¬Èç()"
+"è‡ªåŠ¨è¡¥å…¨é…å¯¹ç¬¦å·ï¼Œå¦‚()"
 Bundle 'AutoClose'
-"×Ô¶¯¼ì²âÎÄ¼ş±àÂë"
+"è‡ªåŠ¨æ£€æµ‹æ–‡ä»¶ç¼–ç "
 Bundle 'FencView.vim'
-"vim±à¼­´°¿ÚÊ÷×´ÏÔÊ¾ÎÄ¼şÄ¿Â¼"
+"vimç¼–è¾‘çª—å£æ ‘çŠ¶æ˜¾ç¤ºæ–‡ä»¶ç›®å½•"
 Bundle 'The-NERD-tree'
-"´úÂë×¢ÊÍ£¬Ñ¡ÖĞ£¬¡®ctrl+h¡¯ ¼´¿É×¢ÊÍ¶àÖÖÓïÑÔ´úÂë"
+"ä»£ç æ³¨é‡Šï¼Œé€‰ä¸­ï¼Œâ€˜ctrl+hâ€™ å³å¯æ³¨é‡Šå¤šç§è¯­è¨€ä»£ç "
 Bundle 'The-NERD-Commenter'
 
-Bundle 'Tabular'
+"Bundle 'Tabular'
 
 Bundle 'plasticboy/vim-markdown'
+"å‚ç›´å¯¹é½çº¿"
+Bundle 'Yggdroot/indentLine'
 
-filetype plugin indent on
+Bundle 'Indent-Guides'
 
+Bundle 'snipMate'
+
+Bundle 'taglist.vim'
+
+Bundle 'LaTeX-Suite-aka-Vim-LaTeX'
+
+Bundle 'altercation/vim-colors-solarized'
 
  " Brief help
  "" :BundleList          - list configured bundles
@@ -342,11 +354,11 @@ filetype plugin indent on
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"²å¼şÉèÖÃ"
+"æ’ä»¶è®¾ç½®"
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "ctrlp.vim"
-"usage: Ctrl+P,ÊäÈëÒª´ò¿ªµÄÎÄ¼şÃû£¬ÎÄ¼şÃûÒ»²¿·Ö»òÂ·¾¶
-"ref£ºhttp://williamherry.com/blog/2012/08/25/master-vim-04-ctrlp/
+"usage: Ctrl+P,è¾“å…¥è¦æ‰“å¼€çš„æ–‡ä»¶åï¼Œæ–‡ä»¶åä¸€éƒ¨åˆ†æˆ–è·¯å¾„
+"refï¼šhttp://williamherry.com/blog/2012/08/25/master-vim-04-ctrlp/
 noremap <C-W><C-U> :CtrlPMRU<CR>
 nnoremap <C-W>u :CtrlPMRU<CR>
 
@@ -357,32 +369,70 @@ let g:ctrlp_max_height=15
 let g:ctrlp_match_window_reversed=0
 let g:ctrlp_mruf_max=500
 let g:ctrlp_follow_symlinks=1
-
 "NERD-Tree"
-"usage: F2´ò¿ª²å¼ş£¬o ´ò¿ª¹Ø±ÕÎÄ¼ş»òÕßÄ¿Â¼ t ÔÚ±êÇ©Ò³ÖĞ´ò¿ª T
-"ÔÚºóÌ¨±êÇ©Ò³ÖĞ´ò¿ª ! Ö´ĞĞ´ËÎÄ¼ş p µ½ÉÏ²ãÄ¿Â¼ P µ½¸ùÄ¿Â¼ K µ½µÚÒ»¸ö½Úµã J
-"µ½×îºóÒ»¸ö½Úµã u ´ò¿ªÉÏ²ãÄ¿Â¼ m ÏÔÊ¾ÎÄ¼şÏµÍ³²Ëµ¥£¨Ìí¼Ó¡¢É¾³ı¡¢ÒÆ¶¯²Ù×÷£© ?
-"°ïÖú q ¹Ø±Õ
+"usage: F2æ‰“å¼€æ’ä»¶ï¼Œo æ‰“å¼€å…³é—­æ–‡ä»¶æˆ–è€…ç›®å½• t åœ¨æ ‡ç­¾é¡µä¸­æ‰“å¼€ T
+"åœ¨åå°æ ‡ç­¾é¡µä¸­æ‰“å¼€ ! æ‰§è¡Œæ­¤æ–‡ä»¶ p åˆ°ä¸Šå±‚ç›®å½• P åˆ°æ ¹ç›®å½• K åˆ°ç¬¬ä¸€ä¸ªèŠ‚
+"ç‚¹ J
+"åˆ°æœ€åä¸€ä¸ªèŠ‚ç‚¹ u æ‰“å¼€ä¸Šå±‚ç›®å½• m æ˜¾ç¤ºæ–‡ä»¶ç³»ç»Ÿèœå•ï¼ˆæ·»åŠ ã€åˆ é™¤ã€ç§»åŠ¨æ“
+"ä½œï¼‰ ?
+"å¸®åŠ© q å…³é—­
 "ref:http://williamherry.com/blog/2012/07/19/master-vim-02-nerdtree/
 nmap <F2> :NERDTreeToggle <CR>
 let NERDTreeMinimalUI=1
 let NERDChristmasTree=1
 
 "NERDCommenter"
-"usage: ĞèÒª´ò¿ª filetype plugin on£¬ÒÀ¿¿ÎÄ¼şÀàĞÍÑ¡Ôñ×¢ÊÍ·û
-"n\cc : Îª¹â±êÒÔÏÂ n ĞĞÌí¼Ó×¢ÊÍ
-"n\cu : Îª¹â±êÒÔÏÂ n ĞĞÈ¡Ïû×¢ÊÍ
-"n\cm : Îª¹â±êÒÔÏÂ n ĞĞÌí¼Ó¿é×¢ÊÍ
-"ÆäÖĞ \ ÊÇVim Ä¬ÈÏµÄ <leader> Öµ£¬¿ÉÍ¨¹ıÔÚ .vimrc ÎÄ¼şÖĞÌí¼Ó   nmap ,cc
-"<leader>cc  =  ĞŞ¸ÄÓ³ÉäÎª , ¼ü¡£¾Í¿ÉÊ¹ÓÃ   n,cc   n,cu  n,cm
-"¿ì½İ¼üÉèÖÃ×¢ÊÍÁË¡£
+"usage: éœ€è¦æ‰“å¼€ filetype plugin onï¼Œä¾é æ–‡ä»¶ç±»å‹é€‰æ‹©æ³¨é‡Šç¬¦
+"n\cc : ä¸ºå…‰æ ‡ä»¥ä¸‹ n è¡Œæ·»åŠ æ³¨é‡Š
+"n\cu : ä¸ºå…‰æ ‡ä»¥ä¸‹ n è¡Œå–æ¶ˆæ³¨é‡Š
+"n\cm : ä¸ºå…‰æ ‡ä»¥ä¸‹ n è¡Œæ·»åŠ å—æ³¨é‡Š
+"å…¶ä¸­ \ æ˜¯Vim é»˜è®¤çš„ <leader> å€¼ï¼Œå¯é€šè¿‡åœ¨ .vimrc æ–‡ä»¶ä¸­æ·»åŠ    nmap ,cc
+"<leader>cc  =  ä¿®æ”¹æ˜ å°„ä¸º , é”®ã€‚å°±å¯ä½¿ç”¨   n,cc   n,cu  n,cm
+"å¿«æ·é”®è®¾ç½®æ³¨é‡Šäº†ã€‚
 
 "FencView"
-"usage:Ê×ÏÈÊäÈë
-":FencAutoDectect×Ô¶¯¼ì²â£¬È»ºó¾Í¿ÉÒÔ:FencView²é¿´×Ô¶¯¼ì²âµ½µÄ×Ö·û¼¯ÊÇÊ²Ã´ÁË
-":FÈ»ºóÖ±½Ótab°´¼ü¾Í¿ÉÒÔÁË,²»ÓÃÈ«²¿ÊäÈë
+"usage:é¦–å…ˆè¾“å…¥
+":FencAutoDectectè‡ªåŠ¨æ£€æµ‹ï¼Œç„¶åå°±å¯ä»¥:FencViewæŸ¥çœ‹è‡ªåŠ¨æ£€æµ‹åˆ°çš„å­—ç¬¦é›†>æ˜¯ä»€ä¹ˆäº†
+":Fç„¶åç›´æ¥tabæŒ‰é”®å°±å¯ä»¥äº†,ä¸ç”¨å…¨éƒ¨è¾“å…¥
 
 "Markdown"
-"¹ØµôÕÛµş¹¦ÄÜ
+"å…³æ‰æŠ˜å åŠŸèƒ½
 let g:vim_markdown_folding_disabled=1
-"ÖØ¸´ÊäÈë:FencViewÊÓ´°ÔÚ'¹Ø±Õ/´ò¿ª'Ö®¼äÇĞ»»
+"é‡å¤è¾“å…¥:FencViewè§†çª—åœ¨'å…³é—­/æ‰“å¼€'ä¹‹é—´åˆ‡æ¢
+"intentLine"
+"let g:indentLine_char = '|'
+let g:indentLine_color_gui = '#006600'
+
+"Indent-guides"
+let g:indent_guides_guide_size=1
+
+"snipMate
+""let g:snippets_dir='home/metman/.vim/bundle/'
+
+"taglist.vim
+"open/close taglist window with ',tl'"
+map <silent><leader>tl :TlistToggle<CR>
+"set path to ctags
+let Tlist_Ctags_Cmd='/usr/bin/ctags'  
+"Only show the current file's tags
+let Tlist_Show_One_File=1
+"Exit when only the taglist window exists
+let Tlist_Exit_OnlyWindow=1
+"use the right window for taglist
+let Tlist_Use_Right_Window=1
+let Tlist_GainFocus_On_ToggleOpen=1
+
+
+"latex
+let g:tex_flavor='latex'
+
+"vim-colors-solarized
+syntax enable
+if has('gui_running')
+	"set background=light
+	set background=dark
+else
+	set background=dark
+endif
+let g:solarized_termcolors=256
+colorscheme solarized
