@@ -48,7 +48,7 @@ source $ZSH/oh-my-zsh.sh
 # Customize to your needs...
 export PATH=$PATH:/opt/intel/composer_xe_2011_sp1.8.273/bin/ia32:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/home/metman/.rvm/bin:/opt/intel/composer_xe_2011_sp1.8.273/mpirt/bin/ia32
 
-export PATH=/home/metman/anaconda/bin:$PATH
+export PATH=/home/metman/bin:/home/metman/anaconda/bin:$PATH
 
 export GEOS_DIR=/home/metman/GEOS
 
@@ -65,4 +65,5 @@ alias gvim='gvim -f'
 
 # ssh uranus
 alias uranus='ssh jinzhy@10.20.49.116'
+alias jinzhy='sshfs -o cache=yes -o workaround=rename -o allow_other -o uid=1020902 -o gid=10209 jinzhy@10.20.49.131:/cma/g3/jinzhy/jqg/GRAPES/GRAPES/SRC ~/research'
 

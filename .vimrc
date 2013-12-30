@@ -30,7 +30,7 @@ set showcmd         " 输入的命令显示出来，看的清楚些
 "set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strftime(\"%d/%m/%y\ -\ %H:%M\")}   "状态行显示的内容 
 "set nocompatible  "去掉讨厌的有关vi一致性模式，避免以前版本的一些bug和局限(为什么它和shortmess设置冲突)
 
-"set fencs=utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936      "fileencodings文件编码
+set fencs=utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936      "fileencodings文件编码
 "set termencoding=utf-8                                          "终>端编码
 "set encoding=utf-8
 "set fileencodings=ucs-bom,utf-8,cp936
@@ -410,6 +410,10 @@ let g:indent_guides_guide_size=1
 ""let g:snippets_dir='home/metman/.vim/bundle/'
 
 "taglist.vim
+"before using taglist, you should 'ctags -R' to generate tags file
+"change between taglist and code window:<Ctrl-w w>
+"source code jump: curse on the function or variable name,then press <Ctrl-]>
+"jump back: <Ctrl-o>
 "open/close taglist window with ',tl'"
 map <silent><leader>tl :TlistToggle<CR>
 "set path to ctags
@@ -434,5 +438,5 @@ if has('gui_running')
 else
 	set background=dark
 endif
-let g:solarized_termcolors=256
-colorscheme solarized
+"let g:solarized_termcolors=256
+"colorscheme solarized
