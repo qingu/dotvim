@@ -9,7 +9,7 @@ set nocompatible    "该设置需要放在下一设置前，不然下一设置�
 set shortmess=atI   " 启动的时候不显示那个援助乌干达儿童的提示  
 set nu              "显示行号
 set go=             "不要图形按钮
-color desert        " 设置背景主题
+"color desert        " 设置背景主题
 
 if has("win32")
      set guifont=Courier_New:h10:cANSI   " 设置字体
@@ -336,11 +336,15 @@ Bundle 'Indent-Guides'
 
 Bundle 'snipMate'
 
+"Bundle 'UltiSnips'
+
 Bundle 'taglist.vim'
 
 Bundle 'LaTeX-Suite-aka-Vim-LaTeX'
 
 Bundle 'altercation/vim-colors-solarized'
+
+"Bundle 'Valloric/YouCompleteMe'
 
  " Brief help
  "" :BundleList          - list configured bundles
@@ -438,5 +442,5 @@ if has('gui_running')
 else
 	set background=dark
 endif
-"let g:solarized_termcolors=256
-"colorscheme solarized
+let g:solarized_termcolors=256
+colorscheme solarized
