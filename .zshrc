@@ -46,14 +46,15 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH=$PATH:/opt/intel/composer_xe_2011_sp1.8.273/bin/ia32:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/home/metman/.rvm/bin:/opt/intel/composer_xe_2011_sp1.8.273/mpirt/bin/ia32
+#export PATH=$PATH:/opt/intel/composer_xe_2011_sp1.8.273/bin/ia32:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/home/metman/.rvm/bin:/opt/intel/composer_xe_2011_sp1.8.273/mpirt/bin/ia32
 
-export PATH=/home/metman/bin:/home/metman/anaconda/bin:$PATH
+#export PATH=/home/metman/bin:/home/metman/anaconda/bin:$PATH
+export PATH=/home/metman/anaconda/bin:$PATH
 
 export GEOS_DIR=/home/metman/GEOS
 
 #intel compiler
-source /opt/intel/bin/compilervars.sh ia32
+source /opt/intel/bin/compilervars.sh intel64
 #customize alias
 alias vi='vim'
 alias rake='noglob rake'
@@ -61,9 +62,12 @@ alias down='sudo shutdown -h now'
 #alias -s pdf=evince
 alias -s pdf=okular
 alias -s mobi=okular
-alias gvim='gvim -f'
+alias gvim='gvim -f 2>/dev/null'
 
 # ssh uranus
 alias uranus='ssh jinzhy@10.20.49.116'
 alias jinzhy='sshfs -o cache=yes -o workaround=rename -o allow_other -o uid=1020902 -o gid=10209 jinzhy@10.20.49.131:/cma/g3/jinzhy/jqg/GRAPES/GRAPES/SRC ~/research'
 
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" 

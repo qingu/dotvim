@@ -444,3 +444,53 @@ else
 endif
 let g:solarized_termcolors=256
 colorscheme solarized
+
+" vimwiki
+ 
+"     是否在词条文件保存时就输出html  这个会让保存大词条比较慢
+"      所以我默认没有启用  有需要的话就把这一行复制到下面去
+"     \ 'auto_export': 1,
+ 
+" 多个维基项目的配置
+let g:vimwiki_list = [{'path': '~/Ebook/vimwiki/src',
+      \ 'path_html': '~/git-projects/wiki/',
+      \ 'template_path': '~/Ebook/vimwiki/test/',
+      \ 'template_default': 'def_template',
+      \ 'template_ext': '.html',
+      \ 'nested_syntaxes': {'python':'python','fortran':'fortran'},
+      \ 'auto_export': 0}]
+
+""      \ 'css_name': '~/Ebook/vimwiki/templates/css/style.css',
+""      \ 'template_path': '~/Ebook/vimwiki/templates/',
+""      \ 'template_default': '',
+""      \ 'template_ext': '.html',
+""      \ 'html_header': 'E:/My Dropbox/Public/vimwiki_template/header.htm',
+""      \ 'html_footer': 'E:/My Dropbox/Public/vimwiki_template/footer.htm',
+""      \ 'diary_link_count': 5},
+""      \{'path': 'Z:\demo\qiuchi\wiki'}]
+
+"使用鼠标
+let g:vimwiki_use_mouse = 1
+
+" 对中文用户来说，我们并不怎么需要驼峰英文成为维基词条
+let g:vimwiki_camel_case = 0
+ 
+" 标记为完成的 checklist 项目会有特别的颜色
+let g:vimwiki_hl_cb_checked = 1
+ 
+" 我的 vim 是没有菜单的，加一个 vimwiki 菜单项也没有意义
+let g:vimwiki_menu = ''
+ 
+" 是否开启按语法折叠  会让文件比较慢
+"let g:vimwiki_folding = 1
+ 
+" 是否在计算字串长度时用特别考虑中文字符
+let g:vimwiki_CJK_length = 1
+ 
+" 详见下文...
+let g:vimwiki_valid_html_tags='b,i,s,u,sub,sup,kbd,del,br,hr,div,code,h1'
+
+let tlist_vimwiki_settings = 'wiki;h:Headers'
+
+map <F4> :Vimwiki2HTML<cr>
+map <C-F4>  :VimwikiAll2HTML<cr>
