@@ -9,7 +9,7 @@ set nocompatible    "该设置需要放在下一设置前，不然下一设置�
 set shortmess=atI   " 启动的时候不显示那个援助乌干达儿童的提示  
 set nu              "显示行号
 set go=             "不要图形按钮
-"color desert        " 设置背景主题
+color desert        " 设置背景主题
 
 if has("win32")
      set guifont=Courier_New:h10:cANSI   " 设置字体
@@ -340,11 +340,13 @@ Bundle 'snipMate'
 
 Bundle 'taglist.vim'
 
-Bundle 'LaTeX-Suite-aka-Vim-LaTeX'
+"Bundle 'LaTeX-Suite-aka-Vim-LaTeX'
 
 Bundle 'altercation/vim-colors-solarized'
 
 "Bundle 'Valloric/YouCompleteMe'
+
+Bundle 'mattn/calendar-vim'
 
  " Brief help
  "" :BundleList          - list configured bundles
@@ -436,14 +438,14 @@ let g:tex_flavor='latex'
 
 "vim-colors-solarized
 syntax enable
-if has('gui_running')
-	"set background=light
-	set background=dark
-else
-	set background=dark
-endif
-let g:solarized_termcolors=256
-colorscheme solarized
+""if has('gui_running')
+""	"set background=light
+""	set background=dark
+""else
+""	set background=dark
+""endif
+""let g:solarized_termcolors=256
+""colorscheme solarized
 
 " vimwiki
  
@@ -452,10 +454,12 @@ colorscheme solarized
 "     \ 'auto_export': 1,
  
 " 多个维基项目的配置
-let g:vimwiki_list = [{'path': '~/Ebook/vimwiki/src',
-      \ 'path_html': '~/git-projects/wiki/',
-      \ 'template_path': '~/Ebook/vimwiki/test/',
-      \ 'template_default': 'def_template',
+let g:vimwiki_list = [{'path': '~/git-projects/wiki/',
+      \ 'path_html': '~/git-projects/wiki/html/',
+      \ 'syntax': 'markdown',
+      \ 'ext': '.mkd',
+      \ 'template_path': '~/git-projects/wiki/',
+      \ 'template_default': 'template',
       \ 'template_ext': '.html',
       \ 'nested_syntaxes': {'python':'python','fortran':'fortran'},
       \ 'auto_export': 0}]
@@ -469,20 +473,22 @@ let g:vimwiki_list = [{'path': '~/Ebook/vimwiki/src',
 ""      \ 'diary_link_count': 5},
 ""      \{'path': 'Z:\demo\qiuchi\wiki'}]
 
+let g:vimwiki_ext2syntax = {'.md':'markdown','.markdown':'markdown','.mdown':'markdown','.mkd':'markdown'}
+
 "使用鼠标
-let g:vimwiki_use_mouse = 1
+"let g:vimwiki_use_mouse = 1
 
 " 对中文用户来说，我们并不怎么需要驼峰英文成为维基词条
 let g:vimwiki_camel_case = 0
  
 " 标记为完成的 checklist 项目会有特别的颜色
-let g:vimwiki_hl_cb_checked = 1
+"let g:vimwiki_hl_cb_checked = 1
  
 " 我的 vim 是没有菜单的，加一个 vimwiki 菜单项也没有意义
 let g:vimwiki_menu = ''
  
 " 是否开启按语法折叠  会让文件比较慢
-"let g:vimwiki_folding = 1
+let g:vimwiki_folding = 1
  
 " 是否在计算字串长度时用特别考虑中文字符
 let g:vimwiki_CJK_length = 1
@@ -494,3 +500,37 @@ let tlist_vimwiki_settings = 'wiki;h:Headers'
 
 map <F4> :Vimwiki2HTML<cr>
 map <C-F4>  :VimwikiAll2HTML<cr>
+
+ "insert date插入日期
+nmap <F3> a<C-R>=strftime("%Y-%m-%d %I:%M %p")<CR><Esc>
+imap <F3> <C-R>=strftime("%Y-%m-%d %I:%M %p")<CR>"
+
+" 更新日期:
+" 会将.mkd文件中的<!---date-->或者<!---date:yyyy.mm.dd-->替换为当前日期
+" 有了这个就很容易实现在make时候向html中更新日期.                               
+func! MikewikiUpdateDatetime()                                                  
+    exec "norm mz"                                                              
+    exec '3 s/\(.*\)/<!---date:'.strftime("%Y-%m-%d")."-->"."/e"                
+    ¦   ¦   ¦   ¦   ¦   ¦   ¦   ¦   ¦   ¦   ¦   ¦   ¦   ¦   ¦   " ^
+" 如果需要时间可以加上 %H:%M:%S
+    exec "norm `z"                                                              
+endfunc                                                                         
+au BufWritePre *.mkd call MikewikiUpdateDatetime()                              
+                                                                                
+" make, 判断如果当前目录下存在makefile(注意大小写)则执行外部命令make.           
+let g:vimwiki_path="~/git-projects/wiki"                                             
+func! MikewikiMake()                                                            
+  "  if filereadable(g:vimwiki_path."/makefile")                                
+    ¦   exec "cd ".g:vimwiki_path                                               
+    ¦   exec "make"                                                             
+    ¦  "  silent !make                                                          
+    ¦  " exec "silent !cd ".g:vimwiki_path                                      
+    ¦  " exec "silent !make"                                                    
+  "  endif                                                                      
+endfunc                                                                         
+                                                                                
+" 设置为在*.mkd后缀的文件, 当保存时候起效果:                                    
+au BufWritePost *.mkd call MikewikiMake()              
+
+"Calendar
+map <F9> :Calendar<cr>

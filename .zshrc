@@ -49,7 +49,7 @@ source $ZSH/oh-my-zsh.sh
 #export PATH=$PATH:/opt/intel/composer_xe_2011_sp1.8.273/bin/ia32:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/home/metman/.rvm/bin:/opt/intel/composer_xe_2011_sp1.8.273/mpirt/bin/ia32
 
 #export PATH=/home/metman/bin:/home/metman/anaconda/bin:$PATH
-export PATH=/home/metman/anaconda/bin:$PATH
+#export PATH=/home/metman/anaconda/bin:$PATH
 
 export GEOS_DIR=/home/metman/GEOS
 
@@ -63,6 +63,11 @@ alias down='sudo shutdown -h now'
 alias -s pdf=okular
 alias -s mobi=okular
 alias gvim='gvim -f 2>/dev/null'
+#office doc
+alias -s doc=wps
+alias -s docx=wps
+alias -s ppt=wpp
+alias -s pptx=wpp
 
 # ssh uranus
 alias uranus='ssh jinzhy@10.20.49.116'
@@ -71,3 +76,13 @@ alias jinzhy='sshfs -o cache=yes -o workaround=rename -o allow_other -o uid=1020
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" 
+
+export PATH=$HOME/.cabal/bin:$PATH
+
+export GOROOT=$HOME/go
+export GOBIN=$GOROOT/bin
+export GOPKG=$GOROOT/pkg/tool/linux_amd64
+export GOARCH=amd64
+export GOOS=linux
+export PATH=$PATH:$GOBIN:$GOPKG
+
