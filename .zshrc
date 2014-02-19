@@ -55,14 +55,19 @@ export GEOS_DIR=/home/metman/GEOS
 
 #intel compiler
 source /opt/intel/bin/compilervars.sh intel64
+source /opt/intel/vtune_amplifier_xe/amplxe-vars.sh  >/dev/null 
 #customize alias
 alias vi='vim'
 alias rake='noglob rake'
 alias down='sudo shutdown -h now'
 #alias -s pdf=evince
+alias gvim='gvim -f 2>/dev/null'
 alias -s pdf=okular
 alias -s mobi=okular
-alias gvim='gvim -f 2>/dev/null'
+alias -s gz='tar -xzvf'
+alias -s tgz='tar -xzvf'
+alias -s zip='unzip'
+alias -s bz2='tar -xjvf'
 #office doc
 alias -s doc=wps
 alias -s docx=wps
@@ -77,7 +82,7 @@ alias jinzhy='sshfs -o cache=yes -o workaround=rename -o allow_other -o uid=1020
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" 
 
-export PATH=$HOME/.cabal/bin:$PATH
+export PATH=$HOME/bin:$HOME/.cabal/bin:$PATH
 
 export GOROOT=$HOME/go
 export GOBIN=$GOROOT/bin
@@ -86,3 +91,6 @@ export GOARCH=amd64
 export GOOS=linux
 export PATH=$PATH:$GOBIN:$GOPKG
 
+#export QT_IM_MODULE=fcitx
+#export GTK_IM_MODULE=fcitx
+#export XMODIFIERS="@im=fcitx"  

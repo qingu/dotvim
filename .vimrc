@@ -348,6 +348,8 @@ Bundle 'altercation/vim-colors-solarized'
 
 Bundle 'mattn/calendar-vim'
 
+Bundle 'Valloric/YouCompleteMe'
+
  " Brief help
  "" :BundleList          - list configured bundles
  "" :BundleInstall(!)    - install(update) bundles
@@ -498,8 +500,8 @@ let g:vimwiki_valid_html_tags='b,i,s,u,sub,sup,kbd,del,br,hr,div,code,h1'
 
 let tlist_vimwiki_settings = 'wiki;h:Headers'
 
-map <F4> :Vimwiki2HTML<cr>
-map <C-F4>  :VimwikiAll2HTML<cr>
+"map <F4> :Vimwiki2HTML<cr>
+"map <C-F4>  :VimwikiAll2HTML<cr>
 
  "insert date插入日期
 nmap <F3> a<C-R>=strftime("%Y-%m-%d %I:%M %p")<CR><Esc>
@@ -534,3 +536,12 @@ au BufWritePost *.mkd call MikewikiMake()
 
 "Calendar
 map <F9> :Calendar<cr>
+
+
+"YouCompleteMe"
+let g:ycm_error_symbol = '>>'
+let g:ycm_warning_symbol = '>*'
+nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nmap <F4> :YcmDiags<CR>

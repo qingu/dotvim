@@ -60,18 +60,18 @@ modkey = "Mod4"
 -- Table of layouts to cover with awful.layout.inc, order matters.
 layouts =
 {
---    awful.layout.suit.floating,
+    awful.layout.suit.floating,
     awful.layout.suit.tile,
     awful.layout.suit.tile.left,
     awful.layout.suit.tile.bottom,
     awful.layout.suit.tile.top,
---    awful.layout.suit.fair,
---    awful.layout.suit.fair.horizontal,
---    awful.layout.suit.spiral,
---    awful.layout.suit.spiral.dwindle,
---    awful.layout.suit.max,
---    awful.layout.suit.max.fullscreen,
---    awful.layout.suit.magnifier
+    awful.layout.suit.fair,
+    awful.layout.suit.fair.horizontal,
+    awful.layout.suit.spiral,
+    awful.layout.suit.spiral.dwindle,
+    awful.layout.suit.max,
+    awful.layout.suit.max.fullscreen,
+    awful.layout.suit.magnifier
 }
 -- }}}
 
@@ -105,9 +105,11 @@ mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesom
 									{ "Thunderbird", "thunderbird"},
 									{ "Wiz", "wiznote"},
 									{ "Pcmanfm", "pcmanfm"},
+									{ "WPS", "wps"},
+									{ "WPP", "wpp"},
 									{ "Gvim", "gvim"},
 									{ "Charm", "charm"},
-									{ "QQ", "qq2012"},
+									{ "QQ", "pidgin"},
 									{ "Log out", "/home/metman/shutdown.sh"}
                                   }
                         })
@@ -371,6 +373,10 @@ awful.rules.rules = {
      { rule = { class = "Wiz" },
        properties = { tag = tags[1][5] } },
      { rule = { class = "Pcmanfm" },
+       properties = { tag = tags[1][4] } },
+     { rule = { class = "WPS" },
+       properties = { tag = tags[1][4] } },
+     { rule = { class = "WPP" },
        properties = { tag = tags[1][4] } },
      { rule = { class = "Thunderbird" },
        properties = { tag = tags[1][6] } },
