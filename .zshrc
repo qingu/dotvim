@@ -94,3 +94,6 @@ export PATH=$PATH:$GOBIN:$GOPKG
 #export QT_IM_MODULE=fcitx
 #export GTK_IM_MODULE=fcitx
 #export XMODIFIERS="@im=fcitx"  
+
+
+[[ -s ~/.autojump/etc/profile.d/autojump.zsh ]] && . ~/.autojump/etc/profile.d/autojump.zsh
