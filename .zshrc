@@ -77,7 +77,8 @@ alias -s pptx=wpp
 # ssh uranus
 alias uranus='ssh jinzhy@10.20.49.116'
 alias jinzhy='sshfs -o cache=yes -o workaround=rename -o allow_other -o uid=1020902 -o gid=10209 jinzhy@10.20.49.131:/cma/g3/jinzhy/jqg/GRAPES/GRAPES/SRC ~/research'
-
+# ssh sw
+alias sw='ssh gp_pal@10.20.73.18'
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" 
