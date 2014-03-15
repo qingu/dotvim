@@ -68,11 +68,13 @@ alias -s gz='tar -xzvf'
 alias -s tgz='tar -xzvf'
 alias -s zip='unzip'
 alias -s bz2='tar -xjvf'
-#office doc
+#WPS
 alias -s doc=wps
 alias -s docx=wps
 alias -s ppt=wpp
 alias -s pptx=wpp
+alias -s xls=et
+alias -s csv=et
 
 # ssh uranus
 alias uranus='ssh jinzhy@10.20.49.116'
