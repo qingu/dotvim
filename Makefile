@@ -1,12 +1,14 @@
 
+ROOT_DIR=$(shell pwd)
+
 .PHONY:link unlink
 link:
-	ln -sf vimrc ~/.vimrc; \
-	ln -sf zshrc ~/.zshrc; \
-	ln -sf rc.lua ~/.config/awesome/rc.lua; \
-	ln -sf screenrc ~/.screenrc; \
-	ln -sf xinitrc ~/.xinitrc; \
-	ln -sf xinitrc ~/.xprofile
+	ln -sf $(ROOT_DIR)/vimrc ~/.vimrc; \
+	ln -sf $(ROOT_DIR)/zshrc ~/.zshrc; \
+	ln -sf $(ROOT_DIR)/rc.lua ~/.config/awesome/rc.lua; \
+	ln -sf $(ROOT_DIR)/screenrc ~/.screenrc; \
+	ln -sf $(ROOT_DIR)/xinitrc ~/.xinitrc; \
+	ln -sf $(ROOT_DIR)/xinitrc ~/.xprofile
 
 
 unlink:
@@ -14,5 +16,5 @@ unlink:
 	rm -rf ~/.zshrc; \
 	rm -rf ~/.config/awesome/rc.lua; \
 	rm -rf ~/.screenrc; \
-	rm -sf ~/.xinitrc; \
+	rm -rf ~/.xinitrc; \
 	rm -rf ~/.xprofile
