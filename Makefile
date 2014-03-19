@@ -12,9 +12,9 @@ link:
 
 
 unlink:
-	rm -rf ~/.vimrc; \
-	rm -rf ~/.zshrc; \
-	rm -rf ~/.config/awesome/rc.lua; \
-	rm -rf ~/.screenrc; \
-	rm -rf ~/.xinitrc; \
-	rm -rf ~/.xprofile
+	rm -f ~/.vimrc; \
+	rm -f ~/.zshrc; \
+	rm -f ~/.config/awesome/rc.lua; \
+	rm -f ~/.screenrc; \
+	rm -f ~/.xinitrc; \
+	rm -f ~/.xprofile
