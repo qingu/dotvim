@@ -30,7 +30,7 @@ set showcmd         " 输入的命令显示出来，看的清楚些
 "set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strftime(\"%d/%m/%y\ -\ %H:%M\")}   "状态行显示的内容 
 "set nocompatible  "去掉讨厌的有关vi一致性模式，避免以前版本的一些bug和局限(为什么它和shortmess设置冲突)
 
-"set fencs=utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936      "fileencodings文件编码
+set fencs=utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936      "fileencodings文件编码
 "set termencoding=utf-8                                          "终>端编码
 "set encoding=utf-8
 "set fileencodings=ucs-bom,utf-8,cp936
@@ -61,14 +61,15 @@ function! SetTitle()
 
     elseif &filetype == 'python'
 
-        call setline(1,          "\#########################################################################")
-        call append(line("."),   "\# File Name: ".expand("%"))
-        call append(line(".")+1, "\# Author: Qingu Jiang")
-        call append(line(".")+2, "\# mail: jiangqingu@gmail.com")
-        call append(line(".")+3, "\# Created Time: ".strftime("%c"))
-        call append(line(".")+4, "\#########################################################################")
-        call append(line(".")+5, "\#!/bin/python")
-        call append(line(".")+6, "")
+        call setline(1,          "\#!/usr/bin/python")
+        call setline(line("."),  "\# -*- coding:utf-8 -*-")
+        call setline(line(".")+1,"\#########################################################################")
+        call append(line(".")+2,   "\# File Name: ".expand("%"))
+        call append(line(".")+3, "\# Author: Qingu Jiang")
+        call append(line(".")+4, "\# mail: jiangqingu@gmail.com")
+        call append(line(".")+5, "\# Created Time: ".strftime("%c"))
+        call append(line(".")+6, "\#########################################################################")
+        call append(line(".")+7, "")
 
     else
 
@@ -149,6 +150,9 @@ map <M-F2> :tabnew<CR>                       "Alt-F2 新建标签
 map <F3> :tabnew .<CR>                       "F3 列出当前目录文件
 
 map <C-F3> \be                               "Ctrl-F3 打开树状文件目>录
+
+"save read-only file with shortcut cmd
+cnoremap sudow w !sudo tee % >/dev/null
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "程序编译、运行及调试
@@ -335,7 +339,19 @@ Bundle 'Indent-Guides'
 
 Bundle 'snipMate'
 
+"Bundle 'UltiSnips'
+
 Bundle 'taglist.vim'
+
+"Bundle 'LaTeX-Suite-aka-Vim-LaTeX'
+
+Bundle 'altercation/vim-colors-solarized'
+
+"Bundle 'Valloric/YouCompleteMe'
+
+Bundle 'mattn/calendar-vim'
+
+Bundle 'Valloric/YouCompleteMe'
 
  " Brief help
  "" :BundleList          - list configured bundles
@@ -405,7 +421,11 @@ let g:indent_guides_guide_size=1
 ""let g:snippets_dir='home/metman/.vim/bundle/'
 
 "taglist.vim
-"open/close taglist window"
+"before using taglist, you should 'ctags -R' to generate tags file
+"change between taglist and code window:<Ctrl-w w>
+"source code jump: curse on the function or variable name,then press <Ctrl-]>
+"jump back: <Ctrl-o>
+"open/close taglist window with ',tl'"
 map <silent><leader>tl :TlistToggle<CR>
 "set path to ctags
 let Tlist_Ctags_Cmd='/usr/bin/ctags'  
@@ -417,3 +437,114 @@ let Tlist_Exit_OnlyWindow=1
 let Tlist_Use_Right_Window=1
 let Tlist_GainFocus_On_ToggleOpen=1
 
+
+"latex
+let g:tex_flavor='latex'
+
+"vim-colors-solarized
+syntax enable
+""if has('gui_running')
+""	"set background=light
+""	set background=dark
+""else
+""	set background=dark
+""endif
+""let g:solarized_termcolors=256
+""colorscheme solarized
+
+" vimwiki
+ 
+"     是否在词条文件保存时就输出html  这个会让保存大词条比较慢
+"      所以我默认没有启用  有需要的话就把这一行复制到下面去
+"     \ 'auto_export': 1,
+ 
+" 多个维基项目的配置
+let g:vimwiki_list = [{'path': '~/git-projects/wiki/',
+      \ 'path_html': '~/git-projects/wiki/html/',
+      \ 'syntax': 'markdown',
+      \ 'ext': '.mkd',
+      \ 'template_path': '~/git-projects/wiki/',
+      \ 'template_default': 'template',
+      \ 'template_ext': '.html',
+      \ 'nested_syntaxes': {'python':'python','fortran':'fortran'},
+      \ 'auto_export': 0}]
+
+""      \ 'css_name': '~/Ebook/vimwiki/templates/css/style.css',
+""      \ 'template_path': '~/Ebook/vimwiki/templates/',
+""      \ 'template_default': '',
+""      \ 'template_ext': '.html',
+""      \ 'html_header': 'E:/My Dropbox/Public/vimwiki_template/header.htm',
+""      \ 'html_footer': 'E:/My Dropbox/Public/vimwiki_template/footer.htm',
+""      \ 'diary_link_count': 5},
+""      \{'path': 'Z:\demo\qiuchi\wiki'}]
+
+let g:vimwiki_ext2syntax = {'.md':'markdown','.markdown':'markdown','.mdown':'markdown','.mkd':'markdown'}
+
+"使用鼠标
+"let g:vimwiki_use_mouse = 1
+
+" 对中文用户来说，我们并不怎么需要驼峰英文成为维基词条
+let g:vimwiki_camel_case = 0
+ 
+" 标记为完成的 checklist 项目会有特别的颜色
+"let g:vimwiki_hl_cb_checked = 1
+ 
+" 我的 vim 是没有菜单的，加一个 vimwiki 菜单项也没有意义
+let g:vimwiki_menu = ''
+ 
+" 是否开启按语法折叠  会让文件比较慢
+let g:vimwiki_folding = 1
+ 
+" 是否在计算字串长度时用特别考虑中文字符
+let g:vimwiki_CJK_length = 1
+ 
+" 详见下文...
+let g:vimwiki_valid_html_tags='b,i,s,u,sub,sup,kbd,del,br,hr,div,code,h1'
+
+let tlist_vimwiki_settings = 'wiki;h:Headers'
+
+"map <F4> :Vimwiki2HTML<cr>
+"map <C-F4>  :VimwikiAll2HTML<cr>
+
+ "insert date插入日期
+nmap <F3> a<C-R>=strftime("%Y-%m-%d %I:%M %p")<CR><Esc>
+imap <F3> <C-R>=strftime("%Y-%m-%d %I:%M %p")<CR>"
+
+" 更新日期:
+" 会将.mkd文件中的<!---date-->或者<!---date:yyyy.mm.dd-->替换为当前日期
+" 有了这个就很容易实现在make时候向html中更新日期.                               
+func! MikewikiUpdateDatetime()                                                  
+    exec "norm mz"                                                              
+    exec '3 s/\(.*\)/<!---date:'.strftime("%Y-%m-%d")."-->"."/e"                
+    ¦   ¦   ¦   ¦   ¦   ¦   ¦   ¦   ¦   ¦   ¦   ¦   ¦   ¦   ¦   " ^
+" 如果需要时间可以加上 %H:%M:%S
+    exec "norm `z"                                                              
+endfunc                                                                         
+au BufWritePre *.mkd call MikewikiUpdateDatetime()                              
+                                                                                
+" make, 判断如果当前目录下存在makefile(注意大小写)则执行外部命令make.           
+let g:vimwiki_path="~/git-projects/wiki"                                             
+func! MikewikiMake()                                                            
+  "  if filereadable(g:vimwiki_path."/makefile")                                
+    ¦   exec "cd ".g:vimwiki_path                                               
+    ¦   exec "make"                                                             
+    ¦  "  silent !make                                                          
+    ¦  " exec "silent !cd ".g:vimwiki_path                                      
+    ¦  " exec "silent !make"                                                    
+  "  endif                                                                      
+endfunc                                                                         
+                                                                                
+" 设置为在*.mkd后缀的文件, 当保存时候起效果:                                    
+au BufWritePost *.mkd call MikewikiMake()              
+
+"Calendar
+map <F9> :Calendar<cr>
+
+
+"YouCompleteMe"
+let g:ycm_error_symbol = '>>'
+let g:ycm_warning_symbol = '>*'
+nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nmap <F4> :YcmDiags<CR>
