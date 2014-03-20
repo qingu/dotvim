@@ -2,7 +2,11 @@
 
 sleep 10s 
 
-xsetroot -solid black &
+export XMODIFIERS="@im=fcitx"
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+
+#xsetroot -solid black &
 #启动屏保程序
 gnome-screensaver &
 #启用gnome的主题，否则你的awesome下的gnome程序会非常难看
@@ -15,12 +19,14 @@ nm-applet &
 update-notifier &      
 #fcitx
 fcitx -d &
-#
+#坚果云
 /usr/bin/python ~/.nutstore/dist/bin/nutstore-pydaemon.py >/dev/null 2>&1 &
 #goagent
 /usr/bin/python /home/metman/bin/goagent/local/proxy.py >/dev/null 2>&1 &
 
 synapse &
+
+#shutter &
 
 while true;
 do

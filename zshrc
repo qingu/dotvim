@@ -100,9 +100,9 @@ export GOARCH=amd64
 export GOOS=linux
 export PATH=$PATH:$GOBIN:$GOPKG
 
-#export QT_IM_MODULE=fcitx
-#export GTK_IM_MODULE=fcitx
-#export XMODIFIERS="@im=fcitx"  
+export QT_IM_MODULE=fcitx
+export GTK_IM_MODULE=fcitx
+export XMODIFIERS="@im=fcitx"  
 
 #mpich
 export PATH=/home/metman/git-projects/WRF_Libraries/opt/ifort/mpich_ifort/bin:$PATH
