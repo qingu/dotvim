@@ -353,6 +353,10 @@ Bundle 'mattn/calendar-vim'
 
 Bundle 'Valloric/YouCompleteMe'
 
+Bundle 'scrooloose/syntastic'
+
+Bundle 'mileszs/ack.vim'
+
  " Brief help
  "" :BundleList          - list configured bundles
  "" :BundleInstall(!)    - install(update) bundles
@@ -548,3 +552,19 @@ nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nmap <F4> :YcmDiags<CR>
+
+
+""""""""""syntastic""""""""""""
+let g:syntastic_check_on_open = 1
+let g:syntastic_cpp_include_dirs = ['/usr/include/']
+let g:syntastic_cpp_remove_include_errors = 1
+let g:syntastic_cpp_check_header = 1
+let g:syntastic_cpp_compiler = 'clang++'
+let g:syntastic_cpp_compiler_options = '-std=c++11 -stdlib=libstdc++'
+let g:syntastic_fortran_compiler = 'gfortran'
+let g:syntastic_fortran_compiler_options = '-std=f95'
+"set error or warning signs
+let g:syntastic_error_symbol = '✗'
+let g:syntastic_warning_symbol = '⚠'
+"whether to show balloons
+let g:syntastic_enable_balloons = 1

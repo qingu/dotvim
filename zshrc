@@ -106,9 +106,18 @@ export XMODIFIERS="@im=fcitx"
 
 #mpich
 export PATH=/home/metman/git-projects/WRF_Libraries/opt/ifort/mpich_ifort/bin:$PATH
-export NETCDF=/home/metman/git-projects/WRF_Libraries/opt/ifort/nc4
 
 export LD_LIBRARY_PATH=/home/metman/git-projects/WRF_Libraries/opt/ifort/nc4/lib:$LD_LIBRARY_PATH
+
+#WRF need
+export NETCDF=/home/metman/git-projects/WRF_Libraries/opt/ifort/nc4
+export JASPERLIB=/home/metman/git-projects/WRF_Libraries/opt/ifort/nc4/lib
+export JASPERINC=/home/metman/git-projects/WRF_Libraries/opt/ifort/nc4/include
+
+#texlive2013
+export PATH=/usr/local/texlive/2013/bin/x86_64-linux:$PATH
+export MANPATH=/usr/local/texlive/2013/texmf-dist/doc/man:$MANPATH
+export INFOPATH=/usr/local/texlive/2013/texmf-dist/doc/info:$INFOPATH
 
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 #                        Extensions
