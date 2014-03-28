@@ -1,10 +1,11 @@
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 "Author:Qingu Jiang
 "Date:2013/2/2
 "Ref:http://www.cnblogs.com/ma6174/archive/2011/12/10/2283393.html
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Basic configure
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+"                            Basic configure
+"%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+"{{{
 set nocompatible    "该设置需要放在下一设置前，不然下一设置无效"
 set shortmess=atI   " 启动的时候不显示那个援助乌干达儿童的提示  
 set nu              "显示行号
@@ -17,7 +18,7 @@ else
      set guifont=Monospace\ 11
 endif
 
-"set tw=78 fo+=Mm "自动换行"
+"set tw=80 fo+=Mm "自动换行"
 "winpos 5 5          " 设定窗口位置 
 "set lines=40 columns=155    " 设定窗口大小
 syntax on           " 语法高亮 
@@ -35,194 +36,8 @@ set fencs=utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936      "fileencodings�
 "set encoding=utf-8
 "set fileencodings=ucs-bom,utf-8,cp936
 "set fileencoding=utf-8
+set t_Co=256
 filetype plugin indent on
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"""""新文件标题"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"新建.c,.h,.sh,.py,.java文件，自动插入文件头 
-
-autocmd BufNewFile *.cpp,*.[ch],*.sh,*.py,*.java exec ":call SetTitle()"
-"定义函数SetTitle，自动插入文件头 
-
-function! SetTitle()
-
-    "如果文件类型为.sh文件 
-
-    if &filetype == 'sh'
-
-        call setline(1,              "\#########################################################################")
-        call append(line("."),   "\# File Name: ".expand("%"))
-        call append(line(".")+1, "\# Author: Qingu Jiang")
-        call append(line(".")+2, "\# mail: jiangqingu@gmail.com")
-        call append(line(".")+3, "\# Created Time: ".strftime("%c"))
-        call append(line(".")+4, "\#########################################################################")
-        call append(line(".")+5, "\#!/bin/bash")
-        call append(line(".")+6, "")
-
-    elseif &filetype == 'python'
-
-        call setline(1,          "\#!/usr/bin/python")
-        call setline(line("."),  "\# -*- coding:utf-8 -*-")
-        call setline(line(".")+1,"\#########################################################################")
-        call append(line(".")+2,   "\# File Name: ".expand("%"))
-        call append(line(".")+3, "\# Author: Qingu Jiang")
-        call append(line(".")+4, "\# mail: jiangqingu@gmail.com")
-        call append(line(".")+5, "\# Created Time: ".strftime("%c"))
-        call append(line(".")+6, "\#########################################################################")
-        call append(line(".")+7, "")
-
-    else
-
-        call setline(1,"/*************************************************************************")
-        call append(line("."),   "    > File Name: ".expand("%"))
-        call append(line(".")+1, "    > Author: Qingu Jiang")
-        call append(line(".")+2, "    > Mail: jiangqingu@gmail.com ") 
-        call append(line(".")+3, "    > Created Time: ".strftime("%c"))
-        call append(line(".")+4, " ************************************************************************/")
-        call append(line(".")+5, "")
-    endif
-
-    if &filetype == 'cpp'
-
-        call append(line(".")+6, "#include<iostream>")
-        call append(line(".")+7, "using namespace std;")
-        call append(line(".")+8, "")
-
-    endif
-
-    if &filetype == 'c'
-
-        call append(line(".")+6, "#include<stdio.h>")
-        call append(line(".")+7, "")
-
-    endif
-
-    "新建文件后，自动定位到文件末尾
-
-    autocmd BufNewFile * normal G
-
-endfunction
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"键盘命令
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""                                 
-nnoremap <F2> :g/^\s*$/d<CR>                 "F2去空行
-
-nnoremap <C-F2> :vert diffsplit              "Ctrl-F2 比较文件
-
-" 映射全选+复制 ctrl+a
-map <C-A> ggVGY
-map! <C-A> <Esc>ggVGY
-map <F12> gg=G
-
-" 选中状态下 Ctrl+c 复制
-vmap <C-c> "+y
-
-
-"fast saving, <leader> default key = '\'
-let mapleader="," "set <leader> key = ','
-
-nmap <leader>w :w<cr>
-
-nmap <leader>q :q!<cr>
-
-"press ,ev to open .vimrc file
-nmap <silent> <leader>ev :e $MYVIMRC<CR>
-
-"nmap <leader>f :find<cr>
-
-"press ,ev to open .vimrc file
-nmap <silent> <leader>ev :e $MYVIMRC<CR>
-
-"press ,sv to reload .vimrc file
-nmap <silent> <leader>sv :so $MYVIMRC<CR>
-
-"press ,e to open file in new tab label
-nmap  <leader>e :tabe<Space>
-
-"press ,r to open file in new tab label
-nmap <leader>r :e<Space>
-
-"press ,p to exec python script
-nmap <leader>p :!python %<CR>
-
-map <M-F2> :tabnew<CR>                       "Alt-F2 新建标签
-
-map <F3> :tabnew .<CR>                       "F3 列出当前目录文件
-
-map <C-F3> \be                               "Ctrl-F3 打开树状文件目>录
-
-"save read-only file with shortcut cmd
-cnoremap sudow w !sudo tee % >/dev/null
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"程序编译、运行及调试
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"C，C++ 按F5编译运行
-
-map <F5> :call CompileRunGcc()<CR>
-map <F6> :call RunGcc()<CR>
-
-func! CompileRunGcc()
-
-    exec "w"
-
-    if &filetype == 'c'
-        exec "!g++ % -o %<"
-
-        exec "! ./%<"
-
-    elseif &filetype == 'cpp'
-
-        exec "!g++ % -o %<"
-
-        exec "! ./%<"
-
-    elseif &filetype == 'fortran'
-
-        exec "!gfortran % -g -o %<.exe"
-
-                "exec "!%<.exe"
-
-                                                  
-    elseif &filetype == 'java'
-
-        exec "!javac %"
-
-        exec "!java %<"
-
-    elseif &filetype == 'sh'
-
-        :!./%
-
-    elseif &filetype == 'python'
-
-        ":!./%
-                exec "!python %"
-
-    endif
-endfunc
-
-func! RunGcc()
-        if &filetype == 'fortran'
-                exec "!%<.exe"
-        endif
-endfunc
-
-
-"C,C++的调试
-
-map <F8> :call Rungdb()<CR>
-
-func! Rungdb()
-
-    exec "w"
-                                                  
-    exec "!g++ % -g -o %<"
-
-    exec "!gdb ./%<"
-
-endfunc
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 ""实用设置
 
@@ -306,6 +121,211 @@ set cc=80
 ""set enc=utf-8
 ""set fencs=utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936
 
+set fdm=marker
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"}}}
+"%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+"                            Keyboard mappings 
+"%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+"{{{
+
+nnoremap <F2> :g/^\s*$/d<CR>                 "F2去空行
+
+nnoremap <C-F2> :vert diffsplit              "Ctrl-F2 比较文件
+
+" 映射全选+复制 ctrl+a
+map <C-A> ggVGY
+map! <C-A> <Esc>ggVGY
+map <F12> gg=G
+
+" 选中状态下 Ctrl+c 复制
+vmap <C-c> "+y
+
+
+"fast saving, <leader> default key = '\'
+let mapleader="," "set <leader> key = ','
+
+nmap <leader>w :w<cr>
+
+nmap <leader>q :q!<cr>
+
+"press ,ev to open .vimrc file
+nmap <silent> <leader>ev :e $MYVIMRC<CR>
+
+"nmap <leader>f :find<cr>
+
+"press ,ev to open .vimrc file
+nmap <silent> <leader>ev :e $MYVIMRC<CR>
+
+"press ,sv to reload .vimrc file
+nmap <silent> <leader>sv :so $MYVIMRC<CR>
+
+"press ,e to open file in new tab label
+nmap  <leader>e :tabe<Space>
+
+"press ,r to open file in new tab label
+nmap <leader>r :e<Space>
+
+"press ,p to exec python script
+nmap <leader>p :!python %<CR>
+
+map <M-F2> :tabnew<CR>                       "Alt-F2 新建标签
+
+map <F3> :tabnew .<CR>                       "F3 列出当前目录文件
+
+map <C-F3> \be                               "Ctrl-F3 打开树状文件目>录
+
+"save read-only file with shortcut cmd
+cnoremap sudow w !sudo tee % >/dev/null
+
+"}}}
+"%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+"                            程序编译、运行及调试
+"%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+"{{{
+
+"""""新文件标题"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"新建.c,.h,.sh,.py,.java文件，自动插入文件头 
+
+autocmd BufNewFile *.cpp,*.[ch],*.sh,*.py,*.java exec ":call SetTitle()"
+"定义函数SetTitle，自动插入文件头 
+
+function! SetTitle()
+
+    "如果文件类型为.sh文件 
+
+    if &filetype == 'sh'
+
+        call setline(1,              "\#########################################################################")
+        call append(line("."),   "\# File Name: ".expand("%"))
+        call append(line(".")+1, "\# Author: Qingu Jiang")
+        call append(line(".")+2, "\# mail: jiangqingu@gmail.com")
+        call append(line(".")+3, "\# Created Time: ".strftime("%c"))
+        call append(line(".")+4, "\#########################################################################")
+        call append(line(".")+5, "\#!/bin/bash")
+        call append(line(".")+6, "")
+
+    elseif &filetype == 'python'
+
+        call setline(1,          "\#!/usr/bin/python")
+        call setline(line("."),  "\# -*- coding:utf-8 -*-")
+        call setline(line(".")+1,"\#########################################################################")
+        call append(line(".")+2,   "\# File Name: ".expand("%"))
+        call append(line(".")+3, "\# Author: Qingu Jiang")
+        call append(line(".")+4, "\# mail: jiangqingu@gmail.com")
+        call append(line(".")+5, "\# Created Time: ".strftime("%c"))
+        call append(line(".")+6, "\#########################################################################")
+        call append(line(".")+7, "")
+
+    else
+
+        call setline(1,"/*************************************************************************")
+        call append(line("."),   "    > File Name: ".expand("%"))
+        call append(line(".")+1, "    > Author: Qingu Jiang")
+        call append(line(".")+2, "    > Mail: jiangqingu@gmail.com ") 
+        call append(line(".")+3, "    > Created Time: ".strftime("%c"))
+        call append(line(".")+4, " ************************************************************************/")
+        call append(line(".")+5, "")
+    endif
+
+    if &filetype == 'cpp'
+
+        call append(line(".")+6, "#include<iostream>")
+        call append(line(".")+7, "using namespace std;")
+        call append(line(".")+8, "")
+
+    endif
+
+    if &filetype == 'c'
+
+        call append(line(".")+6, "#include<stdio.h>")
+        call append(line(".")+7, "")
+
+    endif
+
+    "新建文件后，自动定位到文件末尾
+
+    autocmd BufNewFile * normal G
+
+endfunction
+"C，C++ 按F5编译运行
+
+map <F5> :call CompileRunGcc()<CR>
+map <F6> :call RunGcc()<CR>
+
+func! CompileRunGcc()
+
+    exec "w"
+
+    if &filetype == 'c'
+        exec "!g++ % -o %<"
+
+        exec "! ./%<"
+
+    elseif &filetype == 'cpp'
+
+        exec "!g++ % -o %<"
+
+        exec "! ./%<"
+
+    elseif &filetype == 'fortran'
+
+        exec "!gfortran % -g -o %<.exe"
+
+                "exec "!%<.exe"
+
+                                                  
+    elseif &filetype == 'java'
+
+        exec "!javac %"
+
+        exec "!java %<"
+
+    elseif &filetype == 'sh'
+
+        :!./%
+
+    elseif &filetype == 'python'
+
+        ":!./%
+                exec "!python %"
+
+    endif
+endfunc
+
+func! RunGcc()
+        if &filetype == 'fortran'
+                exec "!%<.exe"
+        endif
+endfunc
+
+
+"C,C++的调试
+
+map <F8> :call Rungdb()<CR>
+
+func! Rungdb()
+
+    exec "w"
+                                                  
+    exec "!g++ % -g -o %<"
+
+    exec "!gdb ./%<"
+
+endfunc
+
+"}}}
+"%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+"                            Vundle
+"%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+"{{{
+
+
+
+
+
 "Vundle设置
 if has("win32")
         set rtp+=$VIM/vimfiles/bundle/vundle/
@@ -356,6 +376,8 @@ Bundle 'Valloric/YouCompleteMe'
 Bundle 'scrooloose/syntastic'
 
 Bundle 'mileszs/ack.vim'
+
+Bundle 'bling/vim-airline'
 
  " Brief help
  "" :BundleList          - list configured bundles
@@ -568,3 +590,12 @@ let g:syntastic_error_symbol = '✗'
 let g:syntastic_warning_symbol = '⚠'
 "whether to show balloons
 let g:syntastic_enable_balloons = 1
+
+"airline"
+set laststatus=2
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme="molokai"
+
+"}}}
+
