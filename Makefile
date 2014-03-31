@@ -10,7 +10,8 @@ link:
 	ln -sf $(ROOT_DIR)/screenrc ~/.screenrc; \
 	ln -sf $(ROOT_DIR)/xinitrc ~/.xinitrc; \
 	ln -sf $(ROOT_DIR)/xinitrc ~/.xprofile; \
-	ln -sf $(ROOT_DIR)/tmux.conf ~/.tmux.conf
+	ln -sf $(ROOT_DIR)/tmux.conf ~/.tmux.conf; \
+	ln -sf $(ROOT_DIR)/gitconfig ~/.gitconfig
 
 
 unlink:
@@ -21,4 +22,5 @@ unlink:
 	rm -f ~/.screenrc; \
 	rm -f ~/.xinitrc; \
 	rm -f ~/.xprofile; \
-	rm -f ~/.tmux.conf
+	rm -f ~/.tmux.conf; \
+	rm -f ~/.gitconfig

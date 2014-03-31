@@ -322,11 +322,7 @@ endfunc
 "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 "{{{
 
-
-
-
-
-"Vundle设置
+"{{{Vundle设置
 if has("win32")
         set rtp+=$VIM/vimfiles/bundle/vundle/
 else
@@ -338,45 +334,31 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 "vim-scripts repos
-"文件搜索插件
 Bundle 'ctrlp.vim'
-"自动补全配对符号，如()"
-Bundle 'AutoClose'
-"自动检测文件编码"
+"Bundle 'AutoClose'
 Bundle 'FencView.vim'
-"vim编辑窗口树状显示文件目录"
 Bundle 'The-NERD-tree'
-"代码注释，选中，‘ctrl+h’ 即可注释多种语言代码"
 Bundle 'The-NERD-Commenter'
-
 "Bundle 'Tabular'
-
-Bundle 'plasticboy/vim-markdown'
-"垂直对齐线"
+"Bundle 'plasticboy/vim-markdown'
 Bundle 'Yggdroot/indentLine'
+"Bundle 'Indent-Guides'
 
-Bundle 'Indent-Guides'
-
-Bundle 'snipMate'
-
-"Bundle 'UltiSnips'
+Bundle "MarcWeber/vim-addon-mw-utils"
+Bundle "tomtom/tlib_vim"
+Bundle "garbas/vim-snipmate"
+" Track the engine.
+"Bundle 'SirVer/ultisnips'
+" Snippets are separated from the engine. Add this if you want them:
+Bundle 'honza/vim-snippets'
 
 Bundle 'taglist.vim'
-
 "Bundle 'LaTeX-Suite-aka-Vim-LaTeX'
-
 Bundle 'altercation/vim-colors-solarized'
-
-"Bundle 'Valloric/YouCompleteMe'
-
 Bundle 'mattn/calendar-vim'
-
 Bundle 'Valloric/YouCompleteMe'
-
 Bundle 'scrooloose/syntastic'
-
 Bundle 'mileszs/ack.vim'
-
 Bundle 'bling/vim-airline'
 
  " Brief help
@@ -388,12 +370,12 @@ Bundle 'bling/vim-airline'
  ""
  "" see :h vundle for more details or wiki for FAQ
  "" NOTE: comments after Bundle command are not allowed..
-
+"}}}
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "插件设置"
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"ctrlp.vim"
+"{{{ctrlp.vim
 "usage: Ctrl+P,输入要打开的文件名，文件名一部分或路径
 "ref：http://williamherry.com/blog/2012/08/25/master-vim-04-ctrlp/
 noremap <C-W><C-U> :CtrlPMRU<CR>
@@ -406,7 +388,9 @@ let g:ctrlp_max_height=15
 let g:ctrlp_match_window_reversed=0
 let g:ctrlp_mruf_max=500
 let g:ctrlp_follow_symlinks=1
-"NERD-Tree"
+"}}}
+
+"{{{NERD-Tree
 "usage: F2打开插件，o 打开关闭文件或者目录 t 在标签页中打开 T
 "在后台标签页中打开 ! 执行此文件 p 到上层目录 P 到根目录 K 到第一个节
 "点 J
@@ -417,8 +401,9 @@ let g:ctrlp_follow_symlinks=1
 nmap <F2> :NERDTreeToggle <CR>
 let NERDTreeMinimalUI=1
 let NERDChristmasTree=1
+"}}}
 
-"NERDCommenter"
+"{{{NERDCommenter
 "usage: 需要打开 filetype plugin on，依靠文件类型选择注释符
 "n\cc : 为光标以下 n 行添加注释
 "n\cu : 为光标以下 n 行取消注释
@@ -426,27 +411,35 @@ let NERDChristmasTree=1
 "其中 \ 是Vim 默认的 <leader> 值，可通过在 .vimrc 文件中添加   nmap ,cc
 "<leader>cc  =  修改映射为 , 键。就可使用   n,cc   n,cu  n,cm
 "快捷键设置注释了。
+"}}}
 
-"FencView"
+"{{{FencView
 "usage:首先输入
 ":FencAutoDectect自动检测，然后就可以:FencView查看自动检测到的字符集>是什么了
 ":F然后直接tab按键就可以了,不用全部输入
+"}}}
 
-"Markdown"
+"{{{Markdown
 "关掉折叠功能
-let g:vim_markdown_folding_disabled=1
+"let g:vim_markdown_folding_disabled=1
 "重复输入:FencView视窗在'关闭/打开'之间切换
+"}}}
+
+"{{{intentLine
 "intentLine"
 "let g:indentLine_char = '|'
 let g:indentLine_color_gui = '#006600'
+"}}}
 
-"Indent-guides"
-let g:indent_guides_guide_size=1
+"{{{Indent-guides
+"let g:indent_guides_guide_size=1
+"}}}
 
-"snipMate
+"{{{snipMate
 ""let g:snippets_dir='home/metman/.vim/bundle/'
+"}}}
 
-"taglist.vim
+"{{{taglist.vim
 "before using taglist, you should 'ctags -R' to generate tags file
 "change between taglist and code window:<Ctrl-w w>
 "source code jump: curse on the function or variable name,then press <Ctrl-]>
@@ -462,12 +455,14 @@ let Tlist_Exit_OnlyWindow=1
 "use the right window for taglist
 let Tlist_Use_Right_Window=1
 let Tlist_GainFocus_On_ToggleOpen=1
+"}}}
 
-
+"{{{latex
 "latex
-let g:tex_flavor='latex'
+"let g:tex_flavor='latex'
+"}}}
 
-"vim-colors-solarized
+"{{{vim-colors-solarized
 syntax enable
 ""if has('gui_running')
 ""	"set background=light
@@ -477,8 +472,9 @@ syntax enable
 ""endif
 ""let g:solarized_termcolors=256
 ""colorscheme solarized
+"}}}
 
-" vimwiki
+"{{{vimwiki
  
 "     是否在词条文件保存时就输出html  这个会让保存大词条比较慢
 "      所以我默认没有启用  有需要的话就把这一行复制到下面去
@@ -546,7 +542,7 @@ func! MikewikiUpdateDatetime()
 " 如果需要时间可以加上 %H:%M:%S
     exec "norm `z"                                                              
 endfunc                                                                         
-au BufWritePre *.mkd call MikewikiUpdateDatetime()                              
+"au BufWritePre *.mkd call MikewikiUpdateDatetime()                              
                                                                                 
 " make, 判断如果当前目录下存在makefile(注意大小写)则执行外部命令make.           
 let g:vimwiki_path="~/git-projects/wiki"                                             
@@ -561,22 +557,25 @@ func! MikewikiMake()
 endfunc                                                                         
                                                                                 
 " 设置为在*.mkd后缀的文件, 当保存时候起效果:                                    
-au BufWritePost *.mkd call MikewikiMake()              
+"au BufWritePost *.mkd call MikewikiMake()              
+"}}}
 
-"Calendar
+"{{{calendar
 map <F9> :Calendar<cr>
+"}}}
 
-
-"YouCompleteMe"
+"{{{YouCompleteMe
 let g:ycm_error_symbol = '>>'
 let g:ycm_warning_symbol = '>*'
+let g:ycm_key_list_select_completion = ['<c-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<c-p>', '<Up>'] 
 nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nmap <F4> :YcmDiags<CR>
+"}}}
 
-
-""""""""""syntastic""""""""""""
+"{{{syntastic
 let g:syntastic_check_on_open = 1
 let g:syntastic_cpp_include_dirs = ['/usr/include/']
 let g:syntastic_cpp_remove_include_errors = 1
@@ -590,12 +589,25 @@ let g:syntastic_error_symbol = '✗'
 let g:syntastic_warning_symbol = '⚠'
 "whether to show balloons
 let g:syntastic_enable_balloons = 1
+"}}}
 
-"airline"
+"{{{airline
 set laststatus=2
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme="molokai"
+"}}}
+
+"{{{UltiSnips
+" Trigger configuration. Do not use <tab> if you use
+" https://github.com/Valloric/YouCompleteMe.
+"let g:UltiSnipsExpandTrigger="<tab>"
+"let g:UltiSnipsJumpForwardTrigger="<c-b>"
+"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+"" If you want :UltiSnipsEdit to split your window.
+"let g:UltiSnipsEditSplit="vertical"
+"let g:UltiSnipsSnippetsDir="~/.vim/bundle/vim-snippets/UltiSnips"
+"}}}
 
 "}}}
 
