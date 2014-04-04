@@ -110,9 +110,10 @@ export PATH=/home/metman/git-projects/WRF_Libraries/opt/ifort/mpich_ifort/bin:$P
 export LD_LIBRARY_PATH=/home/metman/git-projects/WRF_Libraries/opt/ifort/nc4/lib:$LD_LIBRARY_PATH
 
 #WRF need
-export NETCDF=/home/metman/git-projects/WRF_Libraries/opt/ifort/nc4
-export JASPERLIB=/home/metman/git-projects/WRF_Libraries/opt/ifort/nc4/lib
-export JASPERINC=/home/metman/git-projects/WRF_Libraries/opt/ifort/nc4/include
+#export NETCDF=/home/metman/git-projects/WRF_Libraries/opt/ifort/nc4
+#export NETCDF4=/home/metman/git-projects/WRF_Libraries/opt/ifort/nc4
+#export JASPERLIB=/home/metman/git-projects/WRF_Libraries/opt/ifort/nc4/lib
+#export JASPERINC=/home/metman/git-projects/WRF_Libraries/opt/ifort/nc4/include
 
 #texlive2013
 export PATH=/usr/local/texlive/2013/bin/x86_64-linux:$PATH

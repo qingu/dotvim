@@ -198,14 +198,15 @@ function! SetTitle()
 
     if &filetype == 'sh'
 
-        call setline(1,              "\#########################################################################")
-        call append(line("."),   "\# File Name: ".expand("%"))
-        call append(line(".")+1, "\# Author: Qingu Jiang")
-        call append(line(".")+2, "\# mail: jiangqingu@gmail.com")
-        call append(line(".")+3, "\# Created Time: ".strftime("%c"))
-        call append(line(".")+4, "\#########################################################################")
-        call append(line(".")+5, "\#!/bin/bash")
-        call append(line(".")+6, "")
+        call setline(1,              "\#!/bin/bash")
+		call append(line("."),     "")
+		call append(line(".")+1,   "\#********************************************************************")
+        call append(line(".")+2,   "\# File Name: ".expand("%"))
+        call append(line(".")+3, "\# Author: Qingu Jiang")
+        call append(line(".")+4, "\# mail: jiangqingu@gmail.com")
+        call append(line(".")+5, "\# Created Time: ".strftime("%c"))
+		call append(line(".")+6,   "\#********************************************************************")
+        call append(line(".")+7, "")
 
     elseif &filetype == 'python'
 
@@ -437,6 +438,8 @@ let g:indentLine_color_gui = '#006600'
 
 "{{{snipMate
 ""let g:snippets_dir='home/metman/.vim/bundle/'
+let g:snips_author='Jiang Qingu'
+let g:snips_email='jiangqingu@gmail.com'
 "}}}
 
 "{{{taglist.vim

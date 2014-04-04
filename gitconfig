@@ -8,8 +8,11 @@
 	co = checkout
 	st = status
 	br = branch
+	restore = checkout --
 	throw = reset --hard HEAD
+	unstaged = reset --hard HEAD
 	throwh = reset --hard HEAD^
+	uncommit = reset --hard HEAD^
 [color]
 	ui = true
 [push]
