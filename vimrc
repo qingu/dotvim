@@ -15,7 +15,8 @@ color desert        " 设置背景主题
 if has("win32")
      set guifont=Courier_New:h10:cANSI   " 设置字体
 else
-     set guifont=Monospace\ 11
+     "set guifont=Monospace\ 11
+	 set guifont=Source\ Code\ Pro\ Bold\ 11
 endif
 
 "set tw=80 fo+=Mm "自动换行"
@@ -179,6 +180,8 @@ map <C-F3> \be                               "Ctrl-F3 打开树状文件目>录
 "save read-only file with shortcut cmd
 cnoremap sudow w !sudo tee % >/dev/null
 
+"change word to uppercase, I love this very much  
+inoremap <C-u> <esc>gUiwea  
 "}}}
 "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 "                            程序编译、运行及调试
@@ -189,7 +192,7 @@ cnoremap sudow w !sudo tee % >/dev/null
 
 "新建.c,.h,.sh,.py,.java文件，自动插入文件头 
 
-autocmd BufNewFile *.cpp,*.[ch],*.sh,*.py,*.java exec ":call SetTitle()"
+"autocmd BufNewFile *.cpp,*.[ch],*.sh,*.py,*.java exec ":call SetTitle()"
 "定义函数SetTitle，自动插入文件头 
 
 function! SetTitle()
@@ -362,6 +365,8 @@ Bundle 'scrooloose/syntastic'
 Bundle 'mileszs/ack.vim'
 Bundle 'bling/vim-airline'
 
+Bundle 'flazz/vim-colorschemes'
+
  " Brief help
  "" :BundleList          - list configured bundles
  "" :BundleInstall(!)    - install(update) bundles
@@ -484,15 +489,15 @@ syntax enable
 "     \ 'auto_export': 1,
  
 " 多个维基项目的配置
-let g:vimwiki_list = [{'path': '~/git-projects/wiki/',
-      \ 'path_html': '~/git-projects/wiki/html/',
-      \ 'syntax': 'markdown',
-      \ 'ext': '.mkd',
-      \ 'template_path': '~/git-projects/wiki/',
-      \ 'template_default': 'template',
-      \ 'template_ext': '.html',
-      \ 'nested_syntaxes': {'python':'python','fortran':'fortran'},
-      \ 'auto_export': 0}]
+"let g:vimwiki_list = [{'path': '~/git-projects/wiki/',
+      "\ 'path_html': '~/git-projects/wiki/html/',
+      "\ 'syntax': 'markdown',
+      "\ 'ext': '.mkd',
+      "\ 'template_path': '~/git-projects/wiki/',
+      "\ 'template_default': 'template',
+      "\ 'template_ext': '.html',
+      "\ 'nested_syntaxes': {'python':'python','fortran':'fortran'},
+      "\ 'auto_export': 0}]
 
 ""      \ 'css_name': '~/Ebook/vimwiki/templates/css/style.css',
 ""      \ 'template_path': '~/Ebook/vimwiki/templates/',
@@ -503,37 +508,37 @@ let g:vimwiki_list = [{'path': '~/git-projects/wiki/',
 ""      \ 'diary_link_count': 5},
 ""      \{'path': 'Z:\demo\qiuchi\wiki'}]
 
-let g:vimwiki_ext2syntax = {'.md':'markdown','.markdown':'markdown','.mdown':'markdown','.mkd':'markdown'}
+"let g:vimwiki_ext2syntax = {'.md':'markdown','.markdown':'markdown','.mdown':'markdown','.mkd':'markdown'}
 
 "使用鼠标
 "let g:vimwiki_use_mouse = 1
 
 " 对中文用户来说，我们并不怎么需要驼峰英文成为维基词条
-let g:vimwiki_camel_case = 0
+"let g:vimwiki_camel_case = 0
  
 " 标记为完成的 checklist 项目会有特别的颜色
 "let g:vimwiki_hl_cb_checked = 1
  
 " 我的 vim 是没有菜单的，加一个 vimwiki 菜单项也没有意义
-let g:vimwiki_menu = ''
+"let g:vimwiki_menu = ''
  
 " 是否开启按语法折叠  会让文件比较慢
-let g:vimwiki_folding = 1
+"let g:vimwiki_folding = 0
  
 " 是否在计算字串长度时用特别考虑中文字符
-let g:vimwiki_CJK_length = 1
+"let g:vimwiki_CJK_length = 1
  
 " 详见下文...
-let g:vimwiki_valid_html_tags='b,i,s,u,sub,sup,kbd,del,br,hr,div,code,h1'
+"let g:vimwiki_valid_html_tags='b,i,s,u,sub,sup,kbd,del,br,hr,div,code,h1'
 
-let tlist_vimwiki_settings = 'wiki;h:Headers'
+"let tlist_vimwiki_settings = 'wiki;h:Headers'
 
 "map <F4> :Vimwiki2HTML<cr>
 "map <C-F4>  :VimwikiAll2HTML<cr>
 
  "insert date插入日期
-nmap <F3> a<C-R>=strftime("%Y-%m-%d %I:%M %p")<CR><Esc>
-imap <F3> <C-R>=strftime("%Y-%m-%d %I:%M %p")<CR>"
+"nmap <F3> a<C-R>=strftime("%Y-%m-%d %I:%M %p")<CR><Esc>
+"imap <F3> <C-R>=strftime("%Y-%m-%d %I:%M %p")<CR>"
 
 " 更新日期:
 " 会将.mkd文件中的<!---date-->或者<!---date:yyyy.mm.dd-->替换为当前日期

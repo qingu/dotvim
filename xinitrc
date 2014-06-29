@@ -18,7 +18,10 @@ nm-applet &
 #自动更新程序
 update-notifier &      
 #fcitx
-fcitx -d &
+fcitx -d --enable fcitx-qimpanel &
+fcitx-qimpanel &
+
+compton -b &
 #坚果云
 /usr/bin/python ~/.nutstore/dist/bin/nutstore-pydaemon.py >/dev/null 2>&1 &
 #goagent
@@ -26,7 +29,8 @@ fcitx -d &
 
 synapse &
 
-#shutter &
+shutter &
+
 
 while true;
 do

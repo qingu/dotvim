@@ -1,4 +1,4 @@
--- Standard awesome library
+--{{{ Standard awesome library
 require("awful")
 require("awful.autofocus")
 require("awful.rules")
@@ -11,7 +11,7 @@ require("naughty")
 require("debian.menu")
 -- vicious
 vicious = require("vicious")
-
+--}}}
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -60,11 +60,11 @@ modkey = "Mod4"
 -- Table of layouts to cover with awful.layout.inc, order matters.
 layouts =
 {
-    awful.layout.suit.floating,
 --    awful.layout.suit.tile,
     awful.layout.suit.tile.left,
 --    awful.layout.suit.tile.bottom,
     awful.layout.suit.tile.top,
+    awful.layout.suit.floating,
 --    awful.layout.suit.fair,
 --    awful.layout.suit.fair.horizontal,
 --    awful.layout.suit.spiral,
@@ -367,13 +367,13 @@ awful.rules.rules = {
       properties = { floating = true } },
     -- Set Firefox to always map on tags number 2 of screen 1.
      { rule = { class = "Firefox" },
-       properties = { tag = tags[1][2] } },
+       properties = { tag = tags[1][2], floating = true } },
      { rule = { class = "Gvim" },
        properties = { tag = tags[1][3] } },
      { rule = { class = "Wiz" },
-       properties = { tag = tags[1][5] } },
+       properties = { tag = tags[1][5], floating = true } },
      { rule = { class = "Pcmanfm" },
-       properties = { tag = tags[1][4] } },
+       properties = { tag = tags[1][4] }, floating = true },
      { rule = { class = "WPS" },
        properties = { tag = tags[1][4] } },
      { rule = { class = "WPP" },
@@ -418,7 +418,7 @@ end)
  client.add_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
 
--- vicious
+--{{{ vicious
 batwidget = widget({ type = "textbox" })
 vicious.register(batwidget, vicious.widgets.bat, "$1 $2% $3 | ", 5, "BAT0")
 --
@@ -441,3 +441,4 @@ mystatusbar.widgets = {
      layout = awful.widget.layout.horizontal.rightleft
      }
 mystatusbar.screen = 1
+--}}}

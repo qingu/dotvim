@@ -49,7 +49,7 @@ source $ZSH/oh-my-zsh.sh
 #export PATH=$PATH:/opt/intel/composer_xe_2011_sp1.8.273/bin/ia32:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/home/metman/.rvm/bin:/opt/intel/composer_xe_2011_sp1.8.273/mpirt/bin/ia32
 
 #export PATH=/home/metman/bin:/home/metman/anaconda/bin:$PATH
-#export PATH=/home/metman/anaconda/bin:$PATH
+export PATH=/home/metman/anaconda/bin:$PATH
 
 export GEOS_DIR=/home/metman/GEOS
 
@@ -83,15 +83,17 @@ alias -s csv=et
 # ssh uranus
 alias uranus='ssh jinzhy@10.20.49.116'
 alias jinzhy='sshfs -o cache=yes -o workaround=rename -o allow_other -o uid=1020902 -o gid=10209 jinzhy@10.20.49.131:/cma/g3/jinzhy/jqg/GRAPES/GRAPES/SRC ~/research'
+alias grapesomp='sshfs -o cache=yes -o workaround=rename -o allow_other -o uid=1020902 -o gid=10209 jinzhy@10.20.49.131:/cma/g3/jinzhy/jqg/qingu/MODEL/SRC ~/research'
 # ssh sw
 alias sw='ssh gp_pal@10.20.73.18'
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" 
+#[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" 
 
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 #                        Environment Variables
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-export PATH=$HOME/.rvm/bin:$HOME/bin:$HOME/.cabal/bin:$PATH
+#export PATH=$HOME/.rvm/bin:$HOME/bin:$HOME/.cabal/bin:$PATH
+export PATH=$HOME/bin:$HOME/.cabal/bin:$PATH
 
 export GOROOT=$HOME/go
 export GOBIN=$GOROOT/bin
@@ -111,7 +113,6 @@ export LD_LIBRARY_PATH=/home/metman/git-projects/WRF_Libraries/opt/ifort/nc4/lib
 
 #WRF need
 #export NETCDF=/home/metman/git-projects/WRF_Libraries/opt/ifort/nc4
-#export NETCDF4=/home/metman/git-projects/WRF_Libraries/opt/ifort/nc4
 #export JASPERLIB=/home/metman/git-projects/WRF_Libraries/opt/ifort/nc4/lib
 #export JASPERINC=/home/metman/git-projects/WRF_Libraries/opt/ifort/nc4/include
 
@@ -120,8 +121,16 @@ export PATH=/usr/local/texlive/2013/bin/x86_64-linux:$PATH
 export MANPATH=/usr/local/texlive/2013/texmf-dist/doc/man:$MANPATH
 export INFOPATH=/usr/local/texlive/2013/texmf-dist/doc/info:$INFOPATH
 
+#oracle jave
+export JAVA_HOME=/usr/local/java/jre1.8.0_05
+export PATH=$JAVA_HOME/bin:$PATH
+
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 #                        Extensions
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 #1. autojump
 [[ -s ~/.autojump/etc/profile.d/autojump.zsh ]] && . ~/.autojump/etc/profile.d/autojump.zsh
+
+
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
