@@ -125,6 +125,11 @@ export INFOPATH=/usr/local/texlive/2013/texmf-dist/doc/info:$INFOPATH
 export JAVA_HOME=/usr/local/java/jre1.8.0_05
 export PATH=$JAVA_HOME/bin:$PATH
 
+#PGI
+export PATH=/opt/pgi/linux86-64/10.6/bin:$PATH
+
+#UDUNITS
+export UDUNITS2_XML_PATH=/home/metman/anaconda/share/udunits/udunits2.xml
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 #                        Extensions
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
