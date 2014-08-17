@@ -60,10 +60,8 @@ source /opt/intel/vtune_amplifier_xe/amplxe-vars.sh  >/dev/null
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 #                        Customize alias
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-alias vi='vim'
-alias rake='noglob rake'
-alias down='sudo shutdown -h now'   #power down 
-alias gvim='gvim -f 2>/dev/null'
+MYSCRIPTS=$HOME/git-projects/dotvim
+source $MYSCRIPTS/alias.sh
 
 #alias -s pdf=evince
 alias -s pdf=okular
@@ -81,14 +79,10 @@ alias -s xls=et
 alias -s csv=et
 
 # ssh uranus
-alias uranus='ssh jinzhy@10.20.49.116'
 alias jinzhy='sshfs -o cache=yes -o workaround=rename -o allow_other -o uid=1020902 -o gid=10209 jinzhy@10.20.49.131:/cma/g3/jinzhy/jqg/GRAPES/GRAPES/SRC ~/research'
 alias grapesomp='sshfs -o cache=yes -o workaround=rename -o allow_other -o uid=1020902 -o gid=10209 jinzhy@10.20.49.131:/cma/g3/jinzhy/jqg/qingu/MODEL/SRC ~/research'
-# ssh sw
-alias sw='ssh gp_pal@10.20.73.18'
 
-#[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" 
-
+ 
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 #                        Environment Variables
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -139,3 +133,5 @@ export UDUNITS2_XML_PATH=/home/metman/anaconda/share/udunits/udunits2.xml
 
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
+
+export PATH=$HOME/bin/md2pdf:$PATH
